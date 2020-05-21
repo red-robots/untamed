@@ -59,7 +59,7 @@ if( is_front_page() ) {
 		</div>
 		
 		<?php if ($overlay_image) { ?>
-		<div class="slide-overlay">
+		<div class="slide-overlay wow fadeInRight" data-wow-delay=".4s">
 			<img src="<?php echo $overlay_image['url'] ?>" alt="" aria-hidden="true">
 		</div>	
 		<?php } ?>
