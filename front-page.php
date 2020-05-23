@@ -71,11 +71,11 @@ $placeholder = THEMEURI . 'images/rectangle-lg.png';
 				<div class="textwrap">
 					<div class="flexwrap">
 						<?php if ($row2_title) { ?>
-						<div class="titlediv wow fadeIn" data-wow-delay=".6s"><h2 class="coltitle"><?php echo $row2_title ?></h2></div>	
+						<div class="titlediv wow fadeInLeft" data-wow-delay=".6s"><h2 class="coltitle"><?php echo $row2_title ?></h2></div>	
 						<?php } ?>
 
 						<?php if ($row2_text) { ?>
-						<div class="parag wow fadeInRight" data-wow-delay=".7s">
+						<div class="parag wow fadeIn" data-wow-delay=".8s">
 							<div class="inside"><?php echo $row2_text ?></div>
 							<?php if ($row2_buttonName && $row2_buttonLink) { ?>
 							<div class="button"><a href="<?php echo $row2_buttonLink ?>" class="btnCTA"><?php echo $row2_buttonName ?></a></div>	
@@ -101,7 +101,7 @@ $placeholder = THEMEURI . 'images/rectangle-lg.png';
 		<section class="section row3 section-video">
 			<div class="wrapper twocol">
 				<?php if ($row3_title) { ?>
-				<div class="titlecol left">
+				<div class="titlecol left wow fadeIn" data-wow-delay=".4s">
 					<div class="inner">
 						<h2 class="coltitle"><?php echo $row3_title ?></h2>
 						<?php if ($row3_buttoName && $row3_buttoLink) { $p = parse_external_url($row3_buttoLink); ?>
@@ -114,7 +114,7 @@ $placeholder = THEMEURI . 'images/rectangle-lg.png';
 				<?php } ?>
 
 				<?php if ($row3_videothumb && $row3_videoURL) {  ?>
-				<div class="videocol right">
+				<div class="videocol right wow fadeIn" data-wow-delay=".5s">
 					<a id="playVideo" data-fancybox href="<?php echo $row3_videoURL ?>" class="videoThumb" style="background-image:url('<?php echo $row3_videothumb['url'] ?>');">
 						<span class="play"></span>
 						<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" class="placeholder">
