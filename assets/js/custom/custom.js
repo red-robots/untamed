@@ -17,6 +17,11 @@ jQuery(document).ready(function ($) {
 		}
     });
 
+    $('[data-fancybox]').fancybox({
+		protect: true,
+		autoWidth : true
+	});
+
     /* Smooth Scroll */
     $('a[href*="#"]')
 	  .not('[href="#"]')
@@ -65,6 +70,21 @@ jQuery(document).ready(function ($) {
 	$(document).on("click","#toggleMenu",function(){
 		$(this).toggleClass('open');
 		$('body').toggleClass('open-mobile-menu');
+	});
+
+	/* Stick To Footer To Bottom */
+	stickFooterToBottom();
+	function stickFooterToBottom() {
+		var windowHeight = $(window).height();
+		var bodyHeight = $('body').height();
+		if(bodyHeight<windowHeight) {
+			$("html").addClass('stickToBottom');
+		} else {
+			$("html").removeClass('stickToBottom');
+		}
+	}
+	$(window).on('resize',function(){
+		stickFooterToBottom();
 	});
 
 });// END #####################################    END

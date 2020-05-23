@@ -1,8 +1,10 @@
-<?php get_header(); ?>
+<?php 
+get_header(); 
+$placeholder = THEMEURI . 'images/rectangle-lg.png';
+?>
 <main id="main" class="site-main" role="main">
 	<?php while ( have_posts() ) : the_post(); ?>
 		<?php 
-		$placeholder = THEMEURI . 'images/rectangle-lg.png';
 		$row1_image = get_field("row1_image"); 
 		$row1_title = get_field("row1_title"); 
 		$row1_text = get_field("row1_text"); 
@@ -87,6 +89,78 @@
 		</section>
 		<?php } ?>
 
+
+		<?php 
+		$row3_title = get_field("row3_title");
+		$row3_buttoName = get_field("row3_buttoName");
+		$row3_buttoLink = get_field("row3_buttoLink");
+		$row3_videothumb = get_field("row3_videothumb");
+		$row3_videoURL = get_field("row3_video");
+		?>
+		<?php if ($row3_title || ($row3_videothumb && $row3_videoURL) ) { ?>
+		<section class="section row3 section-video">
+			<div class="wrapper twocol">
+				<?php if ($row3_title) { ?>
+				<div class="titlecol left">
+					<div class="inner">
+						<h2 class="coltitle"><?php echo $row3_title ?></h2>
+						<?php if ($row3_buttoName && $row3_buttoLink) { $p = parse_external_url($row3_buttoLink); ?>
+						<div class="button">
+							<a href="<?php echo $row3_buttoLink ?>" target="<?php echo $p['target'] ?>" class="btnCTA black-white"><?php echo $row3_buttoName ?></a>
+						</div>
+						<?php } ?>
+					</div>
+				</div>
+				<?php } ?>
+
+				<?php if ($row3_videothumb && $row3_videoURL) {  ?>
+				<div class="videocol right">
+					<a id="playVideo" data-fancybox href="<?php echo $row3_videoURL ?>" class="videoThumb" style="background-image:url('<?php echo $row3_videothumb['url'] ?>');">
+						<span class="play"></span>
+						<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" class="placeholder">
+					</a>
+				</div>
+				<div id="videoEmbed" style="display:none"><?php echo $row3_videoEmbed ?></div>
+				<?php } ?>
+			</div>
+		</section>
+		<?php } ?>
+
+
+		<?php 
+		$row4_title = get_field("row4_title");
+		$row4_gallery = get_field("row4_gallery");
+		if ($row4_gallery) { ?>
+		<section class="section row4 collaborations">
+			<div class="wrapper">
+				<?php if ($row4_title) { ?>
+				<h2 class="coltitle"><?php echo $row4_title ?></h2>	
+				<?php } ?>
+				<div class="partnerslogo">
+					<?php foreach ($row4_gallery as $img) { 
+						$id = $img['ID'];
+						$link = get_field("weburl",$id);
+						$link_open = '';
+						$link_close = '';
+						if($link) {
+							$link_open = '<a href="'.$link.'" target="_blank">';
+							$link_close = '</a>';
+						}
+					?>
+						<span class="partner">
+							<span style="background-image:url('<?php echo $img['url'] ?>')">
+								<?php echo $link_open ?>
+								<img src="<?php echo $img['url'] ?>" alt="<?php echo $img['title'] ?>" style="display:none;">
+								<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" class="placeholder">
+								<?php echo $link_close ?>
+							</span>
+						</span>
+					<?php } ?>
+				</div>
+			</div>
+		</section>
+		<?php } ?>
+	
 	<?php endwhile; ?>
 </main><!-- #main -->
 <?php

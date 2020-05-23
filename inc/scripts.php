@@ -17,6 +17,7 @@ function bellaworks_scripts() {
 			array(), '20120206', 
 			true 
 		);
+	
 
 	wp_enqueue_script( 
 			'bellaworks-custom', 

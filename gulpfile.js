@@ -192,6 +192,7 @@ gulp.task( 'vendorsJs', function() {
 	//gulp.src( jsVendorSRC )
 	gulp.src( [
 		'./assets/js/vendors/swiper.js',
+		'./assets/js/vendors/fancybox.js',
 		'./assets/js/vendors/wow.js'
 		] )
 		.pipe( concat( jsVendorFile + '.js' ) )

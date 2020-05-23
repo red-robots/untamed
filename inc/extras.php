@@ -175,7 +175,7 @@ function social_icons() {
 
 function parse_external_url( $url = '', $internal_class = 'internal-link', $external_class = 'external-link') {
 
-    $url = trim($url);
+    $url = ($url) ? trim($url) : '';
 
     // Abort if parameter URL is empty
     if( empty($url) ) {
