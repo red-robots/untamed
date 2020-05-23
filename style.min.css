@@ -787,4 +787,5 @@ body.subpage #content .entry-title{font-family:"Teko",sans-serif;font-weight:500
 .site-footer .subscribeBtn a{color:#FFF;text-transform:uppercase;text-align:center;padding:10px 20px}
 @media screen and (max-width:600px){.site-footer .footcolums .footcol{width:100%}
 }@media(min-width:820px){.stickToBottom .site-footer{position:fixed;left:0;bottom:0}
-}
+}body.logged-in.admin-bar .menu-toggle{top:57px}
+body.logged-in.admin-bar .main-navigation{top:115px}

@@ -1053,3 +1053,12 @@ body.subpage #content {
 		bottom: 0;
 	}
 }
+
+body.logged-in.admin-bar {
+	.menu-toggle {
+		top: 57px;
+	}
+	.main-navigation {
+		top: 115px;
+	}
+}
