@@ -686,6 +686,7 @@ body.open-mobile-menu ul.menu>li:nth-child(odd){-webkit-animation-name:fadeInRig
 .btnCTA.black-white:hover{color:#000;background:#FFF}
 .coltitle{font-family:"Teko",sans-serif;font-size:3rem;font-weight:600;line-height:1;margin:0;text-transform:uppercase;color:#FFF}
 @media(min-width:820px){.coltitle{font-size:4rem;line-height:.85}
+}@media(min-width:900px){.coltitle{font-size:4.8rem}
 }.coltitle em{font-style:normal;color:#e0a412}
 .parag{color:#FFF;font-size:1.1rem;line-height:1.4;width:100%}
 @media(min-width:820px){.parag{font-size:1.3rem}

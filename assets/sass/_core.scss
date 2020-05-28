@@ -507,6 +507,9 @@ body {
 		font-size: 4rem;
 		line-height: 0.85;
 	}
+	@include mid {
+		font-size: 4.8rem;
+	}
 	em {
 		font-style: normal;
 		color: $secondary;
