@@ -417,21 +417,20 @@ body {
 	.slide-overlay {
 		position: absolute;
 		right: -20px;
-		top: 18vh;
+		top: 0;
 		max-width: 270px;
 		width: 100%;
 		height: 100%;
 		@include mid {
-			top: 38vh;
 			max-width: 450px;
 		}
 		img {
 			width: 100%;
 			height: auto;
 			position: absolute;
-			top: 50%;
+			top: 52%;
 			left: 0;
-			transform: translateY(-50%);
+			// transform: translateY(-50%);
 		}
 	}
 }
@@ -441,7 +440,7 @@ body {
 	position: relative;
 	overflow:hidden;
 	height: 380px;
-	background-color: $primary;
+	background-color: #808080;
 	@include tab {
 		height: 500px;
 	}
@@ -700,6 +699,37 @@ body {
 	}
 }
 
+.btnArrow {
+	display: inline-block;
+	background: $secondary;
+	color: #FFF;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.2;
+	text-transform: uppercase;
+	padding: 1em 2.5em 1em 1.2em;
+	text-decoration: none;
+	position: relative;
+	&:before, &:after {
+		content:"";
+		display: block;
+		width: 10px;
+		height: 2px;
+		background: #FFF;
+		position: absolute;
+		top: 50%;
+		right: 20px;
+		transition: all ease .3s;
+	}
+	&:before {
+		transform: translateY(-5px) rotate(45deg);
+	}
+	&:after {
+		transform: translateY(1px) rotate(-45deg);
+	}
+}
+
+
 .section-video {
 	background: $secondary;
 	color: #FFF;
@@ -761,10 +791,12 @@ body {
   			background-size: cover;
   			background-position: center;
   			background-repeat: no-repeat;
+  			background-color: #000;
   			width: 100%;
   			float: left;
   			position: relative;
   			cursor: pointer;
+  			overflow: hidden;
   			&:before {
   				content:"";
   				display: block;
@@ -774,6 +806,17 @@ body {
   				position: absolute;
   				top: 0;
   				left: 0;
+  			}
+  			span.thumb {
+  				display: block;
+  				width: 100%;
+  				height: 100%;
+  				position: absolute;
+  				top: 0;
+  				left: 0;
+  				background-size: cover;
+  				background-position: center;
+  				background-repeat: no-repeat;
   			}
   			.play {
 				display: inline-block;
@@ -788,6 +831,7 @@ body {
   				transform: translate(-50%,-50%);
   				z-index: 3;
   				transition: all ease .3s;
+  				z-index: 5;
   			}
   			&:hover {
   				.play {
@@ -803,6 +847,262 @@ body {
   		}
   	}
 }
+
+.section-video-revised {
+	background: $darkBrown;
+	color: #FFF;
+	position: relative;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	@include mid {
+		padding-top: 120px;
+		padding-bottom: 120px;
+	}
+  	&:after {
+  		content:"";
+  		display: block;
+  		width: 100%;
+  		height: 100%;
+  		position: absolute;
+  		top: 0;
+  		left: 0;
+  		background: url('images/dots_pattern.png') center repeat;
+  		opacity: 0.02;
+  	}
+  	.coltitle {
+  		// em {
+  		// 	color: $secondary!important;
+  		// }
+  		&.t1 {
+  			font-size: 5rem;
+  			font-weight: bold;
+  			color: $secondary;
+  		}
+  		&.t2 {
+  			color: #FFF;
+  			font-size: 3rem;
+  		}
+  	}
+  	.twocol {
+  		position: relative;
+  		z-index: 10;
+  		@include flexgroup();
+  		.left {
+  			width: 100%;
+  			margin-bottom: 40px;
+  			@include tab {
+  				width: 60%;
+  				margin-bottom: 0;
+  			}
+  		}
+  		.right {
+  			width: 100%;
+  			@include tab {
+  				width: 40%;
+  			}
+  		}
+  	}
+  	.titlecol {
+  		@include flexgroup-center();
+  		div.button {
+  			margin-top: 20px;
+  			.btnCTA {
+				padding: 10px 25px;
+  			}
+  		}
+  		.rowhead,
+  		.inner {
+  			width: 100%;
+  			float: left;
+  		}
+  		.rowhead {
+  			margin-bottom: 40px;
+  		}
+  		.videocol {
+  			width: 100%;
+  		}
+  	}
+  	.videocol {
+  		.videoThumb {
+  			display: block;
+  			background-size: cover;
+  			background-position: center;
+  			background-repeat: no-repeat;
+  			width: 100%;
+  			float: left;
+  			position: relative;
+  			cursor: pointer;
+  			overflow: hidden;
+  			&:before {
+  				content:"";
+  				display: block;
+  				width: 100%;
+  				height: 100%;
+  				background: rgba(0,0,0,.25);
+  				position: absolute;
+  				top: 0;
+  				left: 0;
+  			}
+  			span.thumb {
+  				display: block;
+  				width: 100%;
+  				height: 100%;
+  				position: absolute;
+  				top: 0;
+  				left: 0;
+  				background-size: cover;
+  				background-position: center;
+  				background-repeat: no-repeat;
+  				transform: scale(1.3);
+  			}
+  			.play {
+				display: inline-block;
+				width: 0;
+				height: 0;
+				border-left: 50px solid #FFF;
+				border-top: 25px solid transparent;
+				border-bottom: 25px solid transparent;
+				position: absolute;
+  				top: 50%;
+  				left: 50%;
+  				transform: translate(-50%,-50%);
+  				z-index: 3;
+  				transition: all ease .3s;
+  				z-index: 5;
+  			}
+  			&:hover {
+  				.play {
+  					border-left-color: $secondary;
+  					transform: translate(-50%,-50%) scale(1.2);
+  				}
+  			}
+  		}
+  		img.placeholder {
+			width: 100%;
+			height: auto;
+			float: left;
+  		}
+  	}
+  	.videoList.right {
+		@include tab {
+			padding-left: 6%;
+		}
+		.inner {
+			@include flexgroup();
+			margin:0 -6px;
+			position: relative;
+			top: -6px;
+		}
+		.vidthumb {
+			width: 50%;
+			padding: 6px;
+		}
+		.videolink {
+			display: block;
+			text-decoration: none;
+			width: 100%;
+			float: left;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-color: #000;
+			position: relative;
+			transition: all ease .3s;
+			overflow:hidden;
+			img {
+				width: 100%;
+				height: auto;
+				float: left;
+			}
+			span.thumb {
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-color: #000;
+				transform: scale(1.3);
+			}
+			span.caption {
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 10;
+				background: rgba($secondary,0.88);
+				text-align: center;
+				color: #FFF;
+				font-size: .85rem;
+				font-weight: 500;
+				line-height: 1.2;
+				transition: all ease .3s;
+				opacity: 0;
+				@include flexgroup-center();
+				span.text {
+					display: block;
+					width: 100%;
+					opacity: 0;
+					transform: translateY(100%);
+					transition: all ease .3s;
+				}
+			}
+			&:hover {
+				span.caption {
+					opacity: 1;
+					span.text {
+						opacity: 1;
+						transform: translateY(0);
+					}
+				}
+			}
+		}
+		.btnArrow {
+			display: block;
+			width: 100%;
+			text-align: center;
+			&:before, &:after {
+				display: none;
+			}
+			span {
+				display: inline-block;
+				position: relative;
+				padding-right: 22px;
+				&:before, &:after {
+					content:"";
+					display: block;
+					width: 10px;
+					height: 2px;
+					background: #FFF;
+					position: absolute;
+					top: 50%;
+					right: 0;
+					transition: all ease .3s;
+				}
+				&:before {
+					transform: translateY(-5px) rotate(45deg);
+				}
+				&:after {
+					transform: translateY(1px) rotate(-45deg);
+				}
+			}
+			&:hover {
+				background: #000;
+				span {
+					&:before, &:after {
+						margin-right: -10px;
+					}
+				}
+			}
+		}
+  	}
+}
+
 
 .collaborations {
 	text-align: center;
@@ -1060,5 +1360,10 @@ body.logged-in.admin-bar {
 	}
 	.main-navigation {
 		top: 115px;
+	}
+	#wpadminbar {
+		position: fixed!important;
+		top: 0;
+		left: 0;
 	}
 }

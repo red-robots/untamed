@@ -1,9 +1,113 @@
 <?php 
 get_header(); 
 $placeholder = THEMEURI . 'images/rectangle-lg.png';
+$rectangle = THEMEURI . 'images/rectangle.png';
 ?>
 <main id="main" class="site-main" role="main">
 	<?php while ( have_posts() ) : the_post(); ?>
+
+		<?php 
+		$row1_title1 = get_field("row1_title1");
+		$row1_title2 = get_field("row1_title2");
+		$row3_buttoName = get_field("row3_buttoName");
+		$row3_buttoLink = get_field("row3_buttoLink");
+		$row3_videothumb = get_field("row3_videothumb");
+		$row3_videoURL = get_field("row3_video");
+		$video_button_name = get_field("video_button_name");
+		$video_button_link = get_field("video_button_link");
+		$moreVideoLink = ($video_button_link) ? parse_external_url($video_button_link) : '';
+		$mainVideoThumbnail = ($row3_videothumb) ? $row3_videothumb['url']:'';
+		$video_galleries = get_field("video_galleries");
+		if(empty($row3_videothumb)) {
+			if($row3_videoURL) {
+				if (strpos($row3_videoURL, 'youtube.com') !== false) {
+					$parts = parse_url($row3_videoURL);
+					parse_str($parts['query'], $query);
+					$youtubeId = (isset($query['v']) && $query['v']) ? $query['v']:'';
+				    //$mainVideoThumbnail = 'https://i.ytimg.com/vi/'.$youtubeId.'/hqdefault.jpg'; /* small image */
+				    $mainVideoThumbnail = 'https://img.youtube.com/vi/'.$youtubeId.'/0.jpg'; /* large image */
+
+				}
+			}
+		}
+		
+		?>
+		<?php if (($row1_title1 || $row1_title2) || ($row3_videothumb && $row3_videoURL) ) { ?>
+		<section class="section row3 section-video-revised">
+			<div class="wrapper twocol">
+				<?php if ($row1_title1 || $row1_title2) { ?>
+				<div class="titlecol left wow fadeIn" data-wow-delay=".4s">
+					<div class="inner">
+						<div class="rowhead">
+							<?php if ($row1_title1) { ?>
+							<h2 class="coltitle t1"><?php echo $row1_title1 ?></h2>
+							<?php } ?>
+							<?php if ($row1_title2) { ?>
+							<h3 class="coltitle t2"><?php echo $row1_title2 ?></h2>
+							<?php } ?>
+						</div>
+						
+					
+					<?php if ($mainVideoThumbnail && $row3_videoURL) {  ?>
+					<div class="videocol">
+						<a id="playVideo" data-fancybox href="<?php echo $row3_videoURL ?>" class="videoThumb">
+							<span class="thumb" style="background-image:url('<?php echo $mainVideoThumbnail ?>');"></span>
+							<span class="play"></span>
+							<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" class="placeholder">
+						</a>
+					</div>
+					<div id="videoEmbed" style="display:none"><?php echo $row3_videoEmbed ?></div>
+					<?php } ?>
+
+						
+					</div>
+				</div>
+				<?php } ?>
+
+
+				<?php if ($video_galleries) { ?>
+				<div class="videoList right wow fadeIn" data-wow-delay=".6s">
+					<div class="inner">
+						<?php foreach ($video_galleries as $v) { 
+							$link = $v['youtube_video_url'];
+							$youtubeId = '';
+							if($link) {
+								$parts = parse_url($link);
+								parse_str($parts['query'], $query);
+								$youtubeId = (isset($query['v']) && $query['v']) ? $query['v']:'';
+							}
+							if($link && $youtubeId) { 
+							$thumbURL = 'https://i.ytimg.com/vi/'.$youtubeId.'/hqdefault.jpg'; 
+							$page = 'https://www.youtube.com/oembed?url='.$link.'&format=json';
+							$videoTitle = '';
+							?>
+							<div class="vidthumb">
+								<a href="<?php echo $link ?>" data-fancybox class="videolink" data-vid="<?php echo $youtubeId ?>">
+									<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true">
+									<span class="thumb" style="background-image:url('<?php echo $thumbURL?>');"></span>
+									<span class="caption">
+										<span class="text"><?php echo $videoTitle ?></span>
+									</span>
+								</a>
+							</div>
+							<?php } ?>
+							
+						<?php } ?>
+					</div>
+
+					<?php if ($video_button_name && $moreVideoLink) { ?>
+					<div class="moreBtnDiv">
+						<a href="<?php echo $video_button_link ?>" target="<?php echo $moreVideoLink['target'] ?>" class="btnArrow"><span><?php echo $video_button_name ?></span></a>
+					</div>
+					<?php } ?>
+					
+				</div>
+				<?php } ?>
+				
+			</div>
+		</section>
+		<?php } ?>
+
 		<?php 
 		$row1_image = get_field("row1_image"); 
 		$row1_title = get_field("row1_title"); 
@@ -91,43 +195,6 @@ $placeholder = THEMEURI . 'images/rectangle-lg.png';
 
 
 		<?php 
-		$row3_title = get_field("row3_title");
-		$row3_buttoName = get_field("row3_buttoName");
-		$row3_buttoLink = get_field("row3_buttoLink");
-		$row3_videothumb = get_field("row3_videothumb");
-		$row3_videoURL = get_field("row3_video");
-		?>
-		<?php if ($row3_title || ($row3_videothumb && $row3_videoURL) ) { ?>
-		<section class="section row3 section-video">
-			<div class="wrapper twocol">
-				<?php if ($row3_title) { ?>
-				<div class="titlecol left wow fadeIn" data-wow-delay=".4s">
-					<div class="inner">
-						<h2 class="coltitle"><?php echo $row3_title ?></h2>
-						<?php if ($row3_buttoName && $row3_buttoLink) { $p = parse_external_url($row3_buttoLink); ?>
-						<div class="button">
-							<a href="<?php echo $row3_buttoLink ?>" target="<?php echo $p['target'] ?>" class="btnCTA black-white"><?php echo $row3_buttoName ?></a>
-						</div>
-						<?php } ?>
-					</div>
-				</div>
-				<?php } ?>
-
-				<?php if ($row3_videothumb && $row3_videoURL) {  ?>
-				<div class="videocol right wow fadeIn" data-wow-delay=".5s">
-					<a id="playVideo" data-fancybox href="<?php echo $row3_videoURL ?>" class="videoThumb" style="background-image:url('<?php echo $row3_videothumb['url'] ?>');">
-						<span class="play"></span>
-						<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" class="placeholder">
-					</a>
-				</div>
-				<div id="videoEmbed" style="display:none"><?php echo $row3_videoEmbed ?></div>
-				<?php } ?>
-			</div>
-		</section>
-		<?php } ?>
-
-
-		<?php 
 		$row4_title = get_field("row4_title");
 		$row4_gallery = get_field("row4_gallery");
 		if ($row4_gallery) { ?>
@@ -163,5 +230,22 @@ $placeholder = THEMEURI . 'images/rectangle-lg.png';
 	
 	<?php endwhile; ?>
 </main><!-- #main -->
+
+<script>
+jQuery(document).ready(function($){
+	if( $(".videolink").length>0 ) {
+		$(".videolink").each(function(){
+			var target = $(this);
+			var id = $(this).attr("data-vid");
+			var url = 'https://www.youtube.com/watch?v=' + id;
+			$.getJSON('https://noembed.com/embed',
+			    {format: 'json', url: url}, function (data) {
+			    var youtube_title = data.title;
+			    target.find("span.caption span.text").text(youtube_title);
+			});
+		});
+	}
+});
+</script>
 <?php
 get_footer();
