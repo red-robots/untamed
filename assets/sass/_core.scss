@@ -1197,7 +1197,7 @@ body {
 	div.thumbnail.nophoto {
 		.thumbLink {
 			&:before {
-				content: "PHOTO COMING SOON";
+				content: "PHOTO NOT AVAILABLE";
 				display: block;
 				width: 100%;
 				font-size: 10px;
