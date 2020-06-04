@@ -9,6 +9,14 @@ add_action('init', 'js_custom_init', 1);
 function js_custom_init() {
     $post_types = array(
         array(
+            'post_type' => 'blog',
+            'menu_name' => 'Blogs',
+            'plural'    => 'Blogs',
+            'single'    => 'Blog',
+            'menu_icon' => 'dashicons-welcome-write-blog',
+            'supports'  => array('title','editor','thumbnail')
+        ),
+        array(
             'post_type' => 'testimonials',
             'menu_name' => 'Testimonials',
             'plural'    => 'Testimonials',
