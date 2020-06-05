@@ -95,7 +95,7 @@ $rectangle = THEMEURI . 'images/rectangle.png';
 				<?php } ?>
 
 
-				<?php get_template_part("parts/home-galleries") ?>
+				<?php get_template_part("parts/home-featured-posts") ?>
 				
 			</div>
 		</section>
