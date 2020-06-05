@@ -3,6 +3,15 @@ $placeholder = THEMEURI . 'images/rectangle-lg.png';
 $rectangle = THEMEURI . 'images/rectangle.png';
 $video_button_name = get_field("video_button_name");
 $video_button_link = get_field("video_button_link");
+$featured_post_id = '';
+$featured_type = get_field("featured_type");
+if($featured_type=='post') {
+	$ftype = get_field("featured_".$featured_type);
+	if( isset($ftype['post_obj']) && $ftype['post_obj'] ) {
+		$obj = $ftype['post_obj'];
+		$featured_post_id = $obj->ID;
+	}
+}
 
 $post_type = 'blog';
 $args = array(
@@ -12,6 +21,12 @@ $args = array(
 	'orderby'		=> 'date',
 	'order'			=> 'DESC'
 );
+
+/* Exclude Post from Featured Story */
+if($featured_post_id) {
+	$args['post__not_in'] = array($featured_post_id);
+}
+
 $posts = get_posts($args);
 
 if ( $posts ) {  ?>
