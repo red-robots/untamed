@@ -12,6 +12,7 @@ $slidesId = ($count>1) ? 'slideshow':'static-banner';
 $placeholder = THEMEURI . 'images/rectangle-lg.png';
 
 if( is_front_page() ) {
+	$banner_text = get_field("banner_text");
 	if( $slides ) {  ?>
 	<div class="slideOuterWrap">
 		<div id="<?php echo $slidesId ?>" class="swiper-container banner-wrap fw homepage">
@@ -20,6 +21,9 @@ if( is_front_page() ) {
 				<?php if ( isset($slides['url']) && $slides['url'] ) { ?>
 
 					<div class="swiper-slide slideItem" style="background-image:url('<?php echo $slides['url'] ?>');">
+						<?php if ($banner_text) { ?>
+						<div class="slideCaption"><div class="text"><?php echo $banner_text ?></div></div>	
+						<?php } ?>
 					</div>
 
 				<?php } else { ?>

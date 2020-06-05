@@ -1,16 +1,19 @@
 <?php 
 $placeholder = THEMEURI . 'images/rectangle-lg.png';
 $rectangle = THEMEURI . 'images/rectangle.png';
+$video_button_name = get_field("video_button_name");
+$video_button_link = get_field("video_button_link");
+
 $post_type = 'blog';
 $args = array(
-	'posts_per_page'=> 8,
+	'posts_per_page'=> -8,
 	'post_type'		=> $post_type,
 	'post_status'	=> 'publish',
 	'orderby'		=> 'date',
 	'order'			=> 'DESC'
 );
-//$posts = new WP_Query($args);
-$posts = get_posts();
+$posts = get_posts($args);
+
 if ( $posts ) {  ?>
 <div class="videoList blogPosts right wow fadeIn" data-wow-delay=".6s">
 	<div class="inner cf">
@@ -33,5 +36,12 @@ if ( $posts ) {  ?>
 		</div>
 	<?php $i++; } ?>
 	</div>
+
+	<?php if ($video_button_name && $video_button_link) { ?>
+	<div class="moreBtnDiv">
+		<a href="<?php echo $video_button_link ?>" target="<?php echo $moreVideoLink['target'] ?>" class="btnArrow"><span><?php echo $video_button_name ?></span></a>
+	</div>
+	<?php } ?>
+
 </div>
 <?php } ?>

@@ -8,53 +8,88 @@ $rectangle = THEMEURI . 'images/rectangle.png';
 
 		<?php 
 		$row1_title1 = get_field("row1_title1");
-		$row1_title2 = get_field("row1_title2");
-		$row3_buttoName = get_field("row3_buttoName");
-		$row3_buttoLink = get_field("row3_buttoLink");
-		$row3_videothumb = get_field("row3_videothumb");
-		$row3_videoURL = get_field("row3_video");
-		if(empty($row3_videothumb)) {
-			if($row3_videoURL) {
-				if (strpos($row3_videoURL, 'youtube.com') !== false) {
-					$parts = parse_url($row3_videoURL);
-					parse_str($parts['query'], $query);
-					$youtubeId = (isset($query['v']) && $query['v']) ? $query['v']:'';
-				    //$mainVideoThumbnail = 'https://i.ytimg.com/vi/'.$youtubeId.'/hqdefault.jpg'; /* small image */
-				    $mainVideoThumbnail = 'https://img.youtube.com/vi/'.$youtubeId.'/0.jpg'; /* large image */
+		$featured_type = (get_field("featured_type")) ? get_field("featured_type") : 'post';
+		$ftype = get_field("featured_".$featured_type);
+		$videoURL = '';
+		$mainVideoThumbnail = '';
+		$subtitle = '';
 
+		if( $ftype ) { 
+			if($featured_type=='video') {
+				$subtitle = $ftype['video_title'];
+				$videoURL = $ftype['video_url'];
+				$videoThumb = $ftype['video_thumb'];
+				$mainVideoThumbnail = '';
+				if($videoURL) {
+					if (strpos($videoURL, 'youtube.com') !== false) {
+						$parts = parse_url($videoURL);
+						parse_str($parts['query'], $query);
+						$youtubeId = (isset($query['v']) && $query['v']) ? $query['v']:'';
+					    //$mainVideoThumbnail = 'https://i.ytimg.com/vi/'.$youtubeId.'/hqdefault.jpg'; /* small image */
+					    $mainVideoThumbnail = 'https://img.youtube.com/vi/'.$youtubeId.'/0.jpg'; /* large image */
+					}
+					if($videoThumb) {
+						$mainVideoThumbnail = ($videoThumb) ? $videoThumb['url']:'';
+					}
+				}
+			} else {
+				if( isset($ftype['post_obj']) && $ftype['post_obj'] ) {
+					$obj = $ftype['post_obj'];
+					$subtitle = $obj->post_title;
 				}
 			}
 		}
 		
 		?>
-		<?php if (($row1_title1 || $row1_title2) || ($row3_videothumb && $row3_videoURL) ) { ?>
+		<?php if ($row1_title1 || $ftype) { ?>
 		<section class="section row3 section-video-revised">
 			<div class="wrapper twocol">
-				<?php if ($row1_title1 || $row1_title2) { ?>
+				<?php if ($row1_title1 || $subtitle) { ?>
 				<div class="titlecol left wow fadeIn" data-wow-delay=".4s">
 					<div class="inner">
 						<div class="rowhead">
 							<?php if ($row1_title1) { ?>
 							<h2 class="coltitle t1"><?php echo $row1_title1 ?></h2>
 							<?php } ?>
-							<?php if ($row1_title2) { ?>
-							<h3 class="coltitle t2"><?php echo $row1_title2 ?></h2>
+							<?php if ($subtitle) { ?>
+							<h3 class="coltitle t2"><?php echo $subtitle ?></h2>
 							<?php } ?>
 						</div>
-						
 					
-					<?php if ($mainVideoThumbnail && $row3_videoURL) {  ?>
-					<div class="videocol">
-						<a id="playVideo" data-fancybox href="<?php echo $row3_videoURL ?>" class="videoThumb">
-							<span class="thumb" style="background-image:url('<?php echo $mainVideoThumbnail ?>');"></span>
-							<span class="play"></span>
-							<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" class="placeholder">
-						</a>
-					</div>
-					<div id="videoEmbed" style="display:none"><?php echo $row3_videoEmbed ?></div>
-					<?php } ?>
-
+						<?php if ( $featured_type=='video' && $mainVideoThumbnail && $videoURL) {  ?>
+						<div class="videocol">
+							<a id="playVideo" data-fancybox href="<?php echo $videoURL ?>" class="videoThumb">
+								<span class="thumb" style="background-image:url('<?php echo $mainVideoThumbnail ?>');"></span>
+								<span class="play"></span>
+								<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" class="placeholder">
+							</a>
+						</div>
+						<?php } ?>
 						
+						<?php if ( $featured_type=='post' && ( isset($ftype['post_obj']) && $ftype['post_obj'] ) ) {  
+							$pid = $obj->ID;
+							$pagelink = get_permalink($pid);
+							$thumbId = get_post_thumbnail_id($pid);
+							$postImage = wp_get_attachment_image_src($thumbId,'large'); 
+							$custom_feat_image = $ftype['custom_feat_image'];
+							$postImageURL = '';
+							if($custom_feat_image) {
+								$postImageURL = $custom_feat_image['url'];
+							} else {
+								$postImageURL = ($postImage) ? $postImage[0] : '';
+							}
+							?>
+							<div class="featuredArticle">
+								<a href="<?php echo $pagelink ?>" class="pageLink <?php echo ($postImage) ? 'hasphoto':'nophoto' ?>">
+									<?php if ($postImageURL) { ?>
+									<span class="thumb" style="background-image:url('<?php echo $postImageURL ?>');"></span>
+									<?php } ?>
+									<img src="<?php echo $placeholder ?>" alt="" aria-hidden="true" class="placeholder">
+									<span class="go"></span>
+								</a>
+							</div>
+						<?php } ?>
+					
 					</div>
 				</div>
 				<?php } ?>

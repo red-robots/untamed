@@ -464,6 +464,32 @@ body {
 		background-position: center left;
 		background-repeat: no-repeat;
 	}
+	.slideCaption {
+		width: 100%;
+		height: 100%;
+		@include flexgroup-center();
+		.text {
+			width: 100%;
+			padding: 20px 30px;
+			text-align: center;
+			font-family: $font_secondary;
+			font-size: 10vw;
+			font-weight: 500;
+			line-height: 1;
+			color: #FFF;
+			transition: all ease .3s;
+			@include tab {
+				font-size: 8vw;
+			}
+			@include mid {
+				font-weight: 600;
+				font-size: 8vw;
+			}
+			@include desk {
+				font-size: 100px;
+			}
+		}
+	}
 }
 
 .section {
@@ -887,6 +913,7 @@ body {
   		&.t2 {
   			color: #FFF;
   			font-size: 2rem;
+  			line-height: 0.9;
   			@include tab {
   				font-size: 3rem;
   			}
@@ -1111,6 +1138,90 @@ body {
 			}
 		}
   	}
+
+}
+
+.featuredArticle {
+	width: 100%;
+	float: left;
+	a {
+		display: block;
+		width: 100%;
+		float: left;
+		position: relative;
+		background-color: #000;
+		overflow: hidden;
+		* {
+			transition: all ease .3s;
+		}
+		&.nophoto {
+			&:before {
+				content: "PHOTO NOT AVAILABLE";
+				display: block;
+				width: 100%;
+				font-size: 1vw;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				position: absolute;
+				top: 50%;
+				left: 0;
+				color: #fff;
+				z-index: 10;
+				text-align: center;
+				transform: translateY(-50%);
+				opacity: 0.3;
+			}
+		}
+		span.go {
+			display: block;
+			width: 80px;
+			height: 80px;
+			// background: rgba(0,0,0,.5);
+			background: rgba($secondary,.6);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			z-index: 11;
+			border-radius: 100%;
+			&:before {
+				content:"";
+				display: inline-block;
+				width: 0;
+				height: 0;
+				border-left: 30px solid #FFF;
+				border-top: 18px solid transparent;
+				border-bottom: 18px solid transparent;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				margin-left: 5px;
+			}
+		}
+		img {
+			width: 100%;
+			height: auto;
+			float: left;
+		}
+		span.thumb {
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 5;
+		}
+		&:hover {
+			span.go {
+				background: rgba($secondary,1);
+			}
+		}
+	}
 }
 
 .blogPosts {
