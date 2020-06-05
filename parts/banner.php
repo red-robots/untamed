@@ -22,7 +22,7 @@ if( is_front_page() ) {
 
 					<div class="swiper-slide slideItem" style="background-image:url('<?php echo $slides['url'] ?>');">
 						<?php if ($banner_text) { ?>
-						<div class="slideCaption"><div class="text"><?php echo $banner_text ?></div></div>	
+						<div class="slideCaption animated wow fadeIn"><div class="text"><?php echo $banner_text ?></div></div>	
 						<?php } ?>
 					</div>
 
