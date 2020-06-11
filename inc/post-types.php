@@ -1,308 +1,360 @@
 <?php 
-/*
- * Custom Post Types 
- * DASH ICONS = https://developer.wordpress.org/resource/dashicons/
- * Example: 'menu_icon' => 'dashicons-admin-users'
-*/
+/* Custom Post Types */
 
-add_action('init', 'js_custom_init', 1);
-function js_custom_init() {
-    $post_types = array(
-        array(
-            'post_type' => 'blog',
-            'menu_name' => 'Blogs',
-            'plural'    => 'Blogs',
-            'single'    => 'Blog',
-            'menu_icon' => 'dashicons-welcome-write-blog',
-            'supports'  => array('title','editor','thumbnail')
-        ),
-        array(
-            'post_type' => 'biodiversity',
-            'menu_name' => 'Biodiversity',
-            'plural'    => 'Biodiversity',
-            'single'    => 'Biodiversity',
-            'menu_icon' => 'dashicons-format-quote',
-            'supports'  => array('title','editor')
-        ),
-        array(
-            'post_type' => 'filmmaking',
-            'menu_name' => 'Filmmaking',
-            'plural'    => 'Filmmaking',
-            'single'    => 'Filmmaking',
-            'menu_icon' => 'dashicons-groups',
-            'supports'  => array('title','editor')
-        ),
-        array(
-            'post_type' => 'biology',
-            'menu_name' => 'Biology',
-            'plural'    => 'Biology',
-            'single'    => 'Biology',
-            'menu_icon' => 'dashicons-location',
-            'supports'  => array('title','editor')
-        ),
-        array(
-            'post_type' => 'ad',
-            'menu_name' => 'Ads',
-            'plural'    => 'Ads',
-            'single'    => 'Ads',
-            'menu_icon' => 'dashicons-location',
-            'supports'  => array('title','editor')
-        )
-    );
-    
-    if($post_types) {
-        foreach ($post_types as $p) {
-            $p_type = ( isset($p['post_type']) && $p['post_type'] ) ? $p['post_type'] : ""; 
-            $single_name = ( isset($p['single']) && $p['single'] ) ? $p['single'] : "Custom Post"; 
-            $plural_name = ( isset($p['plural']) && $p['plural'] ) ? $p['plural'] : "Custom Post"; 
-            $menu_name = ( isset($p['menu_name']) && $p['menu_name'] ) ? $p['menu_name'] : $p['plural']; 
-            $menu_icon = ( isset($p['menu_icon']) && $p['menu_icon'] ) ? $p['menu_icon'] : "dashicons-admin-post"; 
-            $supports = ( isset($p['supports']) && $p['supports'] ) ? $p['supports'] : array('title','editor','custom-fields','thumbnail'); 
-            $taxonomies = ( isset($p['taxonomies']) && $p['taxonomies'] ) ? $p['taxonomies'] : array(); 
-            $parent_item_colon = ( isset($p['parent_item_colon']) && $p['parent_item_colon'] ) ? $p['parent_item_colon'] : ""; 
-            $menu_position = ( isset($p['menu_position']) && $p['menu_position'] ) ? $p['menu_position'] : 20; 
-            
-            if($p_type) {
-                
-                $labels = array(
-                    'name' => _x($plural_name, 'post type general name'),
-                    'singular_name' => _x($single_name, 'post type singular name'),
-                    'add_new' => _x('Add New', $single_name),
-                    'add_new_item' => __('Add New ' . $single_name),
-                    'edit_item' => __('Edit ' . $single_name),
-                    'new_item' => __('New ' . $single_name),
-                    'view_item' => __('View ' . $single_name),
-                    'search_items' => __('Search ' . $plural_name),
-                    'not_found' =>  __('No ' . $plural_name . ' found'),
-                    'not_found_in_trash' => __('No ' . $plural_name . ' found in Trash'), 
-                    'parent_item_colon' => $parent_item_colon,
-                    'menu_name' => $menu_name
-                );
-            
-            
-                $args = array(
-                    'labels' => $labels,
-                    'public' => true,
-                    'publicly_queryable' => true,
-                    'show_ui' => true, 
-                    'show_in_menu' => true, 
-                    'show_in_rest' => true,
-                    'query_var' => true,
-                    'rewrite' => true,
-                    'capability_type' => 'post',
-                    'has_archive' => false, 
-                    'hierarchical' => false, // 'false' acts like posts 'true' acts like pages
-                    'menu_position' => $menu_position,
-                    'menu_icon'=> $menu_icon,
-                    'supports' => $supports
-                ); 
-                
-                register_post_type($p_type,$args); // name used in query
-                
-            }
-            
-        }
-    }
-}
+/* Create Your Custom Post Types */
+add_action('init', 'js_custom_init');
+function js_custom_init() 
+{
+/* Custom Post Type Biodiversity */
+  $labels = array(
+  'name' => _x('Biodiversity', 'post type general name'),
+    'singular_name' => _x('Biodiversity', 'post type singular name'),
+    'add_new' => _x('Add New', 'banner'),
+    'add_new_item' => __('Add New Biodiversity Item'),
+    'edit_item' => __('Edit Biodiversity Item'),
+    'new_item' => __('New Biodiversity Item'),
+    'view_item' => __('View Biodiversity Item'),
+    'search_items' => __('Search Biodiversity'),
+    'not_found' =>  __('None found'),
+    'not_found_in_trash' => __('None found in Trash'), 
+    'parent_item_colon' => '',
+    'menu_name' => 'Biodiversity'
+  );
+  $args = array(
+  'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true,
+    'rewrite' => true,
+    'capability_type' => 'post',
+    'has_archive' => true, 
+    'hierarchical' => false,
+    'menu_position' => 20,
+    'supports' => array('title','editor','custom-fields','thumbnail','page-attributes', 'comments', 'author', 'trackbacks'),
+  'taxonomies' => array('biodiversitycats', 'post_tag', 'biodiversity') 
+  ); 
+  register_post_type('biodiversity',$args);  
 
-// Add new taxonomy, make it hierarchical (like categories)
-add_action( 'init', 'ii_custom_taxonomies', 0 );
-function ii_custom_taxonomies() {
-        $posts = array(
-            array(
-                'post_type' => 'biodiversity',
-                'menu_name' => 'Kingdom',
-                'plural'    => 'Kingdom',
-                'single'    => 'Kingdom',
-                'taxonomy'  => 'kingdomtag',
-                'rewrite'   => 'kingdom'
-            ),
-            array(
-                'post_type' => 'biodiversity',
-                'menu_name' => 'Phylum',
-                'plural'    => 'Phylum',
-                'single'    => 'Phylum',
-                'taxonomy'  => 'phylumtag',
-                'rewrite'   => 'phylum'
-            ),
-            array(
-                'post_type' => 'biodiversity',
-                'menu_name' => 'Class',
-                'plural'    => 'Class',
-                'single'    => 'Class',
-                'taxonomy'  => 'classtag',
-                'rewrite'   => 'class'
-            ),
-            array(
-                'post_type' => 'biodiversity',
-                'menu_name' => 'Order',
-                'plural'    => 'Order',
-                'single'    => 'Order',
-                'taxonomy'  => 'ordertag',
-                'rewrite'   => 'order'
-            ),
-            array(
-                'post_type' => 'biodiversity',
-                'menu_name' => 'Family',
-                'plural'    => 'Family',
-                'single'    => 'Family',
-                'taxonomy'  => 'familytag',
-                'rewrite'   => 'family'
-            ),
-            array(
-                'post_type' => 'biodiversity',
-                'menu_name' => 'Genus',
-                'plural'    => 'Genus',
-                'single'    => 'Genus',
-                'taxonomy'  => 'genustag',
-                'rewrite'   => 'genus'
-            ),
-            array(
-                'post_type' => 'biodiversity',
-                'menu_name' => 'Species',
-                'plural'    => 'Species',
-                'single'    => 'Species',
-                'taxonomy'  => 'speciestag',
-                'rewrite'   => 'species'
-            ),
-            array(
-                'post_type' => 'biodiversity',
-                'menu_name' => 'Biodiversity',
-                'plural'    => 'Biodiversity',
-                'single'    => 'Biodiversity',
-                'taxonomy'  => 'biodiversitycats',
-                'rewrite'   => 'biodiversity-category'
-            ),
-            array(
-                'post_type' => 'biodiversity',
-                'menu_name' => 'Classification',
-                'plural'    => 'Classification',
-                'single'    => 'Classification',
-                'taxonomy'  => 'categories',
-                'rewrite'   => 'classification'
-            ),
-            array(
-                'post_type' => 'biology',
-                'menu_name' => 'Biology Categories',
-                'plural'    => 'Biology Categories',
-                'single'    => 'Biology Categories',
-                'taxonomy'  => 'biocats',
-                'rewrite'   => 'biology_category'
-            ),
-            array(
-                'post_type' => 'blog',
-                'menu_name' => 'Blog Categories',
-                'plural'    => 'Blog Categories',
-                'single'    => 'Blog Categories',
-                'taxonomy'  => 'blogcats',
-                'rewrite'   => 'blog-category'
-            ),
-            array(
-                'post_type' => 'filmmaking',
-                'menu_name' => 'Film Categories',
-                'plural'    => 'Film Categories',
-                'single'    => 'Film Categories',
-                'taxonomy'  => 'filmmakingcats',
-                'rewrite'   => 'filmmaking-category'
-            ),
-            // array(
-            //     'post_type' => array( 'blog','biodiversity','biology', 'filmmaking' ),
-            //     'menu_name' => 'Show on Front Page?',
-            //     'plural'    => 'Show on Front Page?',
-            //     'single'    => 'Show on Front Page?',
-            //     'taxonomy'  => 'front_page',
-            //     'rewrite'   => 'front'
-            // ),
-        );
-    
-    if($posts) {
-        foreach($posts as $p) {
-            $p_type = ( isset($p['post_type']) && $p['post_type'] ) ? $p['post_type'] : ""; 
-            $single_name = ( isset($p['single']) && $p['single'] ) ? $p['single'] : "Custom Post"; 
-            $plural_name = ( isset($p['plural']) && $p['plural'] ) ? $p['plural'] : "Custom Post"; 
-            $menu_name = ( isset($p['menu_name']) && $p['menu_name'] ) ? $p['menu_name'] : $p['plural'];
-            $taxonomy = ( isset($p['taxonomy']) && $p['taxonomy'] ) ? $p['taxonomy'] : "";
-            $rewrite = ( isset($p['rewrite']) && $p['rewrite'] ) ? $p['rewrite'] : $taxonomy;
-            
-            
-            if( $taxonomy && $p_type ) {
-                $labels = array(
-                    'name' => _x( $menu_name, 'taxonomy general name' ),
-                    'singular_name' => _x( $single_name, 'taxonomy singular name' ),
-                    'search_items' =>  __( 'Search ' . $plural_name ),
-                    'popular_items' => __( 'Popular ' . $plural_name ),
-                    'all_items' => __( 'All ' . $plural_name ),
-                    'parent_item' => __( 'Parent ' .  $single_name),
-                    'parent_item_colon' => __( 'Parent ' . $single_name . ':' ),
-                    'edit_item' => __( 'Edit ' . $single_name ),
-                    'update_item' => __( 'Update ' . $single_name ),
-                    'add_new_item' => __( 'Add New ' . $single_name ),
-                    'new_item_name' => __( 'New ' . $single_name ),
-                  );
+/* Custom Post Type How to filmmaking */
+  $labels = array(
+  'name' => _x('Filmmaking Post', 'post type general name'),
+    'singular_name' => _x('Filmmaking Post', 'post type singular name'),
+    'add_new' => _x('Add New', 'Filmmaking Post'),
+    'add_new_item' => __('Add New Filmmaking Post Item'),
+    'edit_item' => __('Edit Filmmaking Post Item'),
+    'new_item' => __('New Filmmaking Post Item'),
+    'view_item' => __('View Filmmaking Post Item'),
+    'search_items' => __('Search Filmmaking Post'),
+    'not_found' =>  __('None found'),
+    'not_found_in_trash' => __('None found in Trash'), 
+    'parent_item_colon' => '',
+    'menu_name' => 'Filmmaking'
+  );
+  $args = array(
+  'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true,
+    'rewrite' => true,
+    'capability_type' => 'post',
+    'has_archive' => true, 
+    'hierarchical' => true,
+    'menu_position' => 20,
+    'supports' => array('title','editor','custom-fields','thumbnail','page-attributes', 'comments', 'author', 'trackbacks'),
+  /*'with_front' => true, */
+  'taxonomies' => array('post_tag', 'blog') 
+  ); 
+  register_post_type('filmmaking',$args); 
+  
+/* Custom Post Type Blog */
+  $labels = array(
+  'name' => _x('Blog Post', 'post type general name'),
+    'singular_name' => _x('Blog Post', 'post type singular name'),
+    'add_new' => _x('Add New', 'Blog Post'),
+    'add_new_item' => __('Add New Blog Post Item'),
+    'edit_item' => __('Edit Blog Post Item'),
+    'new_item' => __('New Blog Post Item'),
+    'view_item' => __('View Blog Post Item'),
+    'search_items' => __('Search Blog Post'),
+    'not_found' =>  __('None found'),
+    'not_found_in_trash' => __('None found in Trash'), 
+    'parent_item_colon' => '',
+    'menu_name' => 'Blog Post'
+  );
+  $args = array(
+  'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true,
+    'rewrite' => true,
+    'capability_type' => 'post',
+    'has_archive' => true, 
+    'hierarchical' => false,
+    'menu_position' => 20,
+    'supports' => array('title','editor','custom-fields','thumbnail','page-attributes', 'comments', 'author', 'trackbacks'),
+  'taxonomies' => array('post_tag', 'blog') 
+  ); 
+  register_post_type('blog',$args);  
 
-              register_taxonomy($taxonomy,array($p_type), array(
-                'hierarchical' => true,
-                'labels' => $labels,
-                'show_ui' => true,
-                'show_in_rest' => true,
-                'show_admin_column' => true,
-                'query_var' => true,
-                'rewrite' => array( 'slug' => $rewrite ),
-              ));
-            }
-            
-        }
-    }
-}
+/* Custom Post Type Biology */
+  $labels = array(
+  'name' => _x('Biology', 'post type general name'),
+    'singular_name' => _x('Biology', 'post type singular name'),
+    'add_new' => _x('Add New', 'banner'),
+    'add_new_item' => __('Add New Biology Item'),
+    'edit_item' => __('Edit Biology Item'),
+    'new_item' => __('New Biology Item'),
+    'view_item' => __('View Biology Item'),
+    'search_items' => __('Search Biology'),
+    'not_found' =>  __('None found'),
+    'not_found_in_trash' => __('None found in Trash'), 
+    'parent_item_colon' => '',
+    'menu_name' => 'Biology'
+  );
+  $args = array(
+  'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true,
+    'rewrite' => true,
+    'capability_type' => 'post',
+    'has_archive' => true, 
+    'hierarchical' => true,
+    'menu_position' => 20,
+    'supports' => array('title','editor','custom-fields','thumbnail','page-attributes', 'comments', 'author', 'trackbacks'),
+  'taxonomies' => array('post_tag', 'biology') 
+  ); 
+  register_post_type('biology',$args);
 
-// Add the custom columns to the position post type:
-add_filter( 'manage_posts_columns', 'set_custom_cpt_columns' );
-function set_custom_cpt_columns($columns) {
-    global $wp_query;
-    $query = isset($wp_query->query) ? $wp_query->query : '';
-    $post_type = ( isset($query['post_type']) ) ? $query['post_type'] : '';
-    
-    
-    if($post_type=='teams') {
-        unset( $columns['taxonomy-team-groups'] );
-        unset( $columns['title'] );
-        unset( $columns['date'] );
-        $columns['title'] = __( 'Name', 'bellaworks' );
-        $columns['photo'] = __( 'Photo', 'bellaworks' );
-        $columns['taxonomy-team-groups'] = __( 'Group', 'bellaworks' );
-        $columns['date'] = __( 'Date', 'bellaworks' );
-    }
-    
-    return $columns;
-}
 
-// Add the data to the custom columns for the book post type:
-add_action( 'manage_posts_custom_column' , 'custom_post_column', 10, 2 );
-function custom_post_column( $column, $post_id ) {
-    global $wp_query;
-    $query = isset($wp_query->query) ? $wp_query->query : '';
-    $post_type = ( isset($query['post_type']) ) ? $query['post_type'] : '';
+  /* Custom Post Type Biology */
+  $labels = array(
+  'name' => _x('Ads', 'post type general name'),
+    'singular_name' => _x('Ad', 'post type singular name'),
+    'add_new' => _x('Add New', 'Ad'),
+    'add_new_item' => __('Add New Ad'),
+    'edit_item' => __('Edit Ad'),
+    'new_item' => __('New Ad'),
+    'view_item' => __('View Ad'),
+    'search_items' => __('Search Ads'),
+    'not_found' =>  __('None found'),
+    'not_found_in_trash' => __('None found in Trash'), 
+    'parent_item_colon' => '',
+    'menu_name' => 'Ads'
+  );
+  $args = array(
+  'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true,
+    'rewrite' => true,
+    'capability_type' => 'post',
+    'has_archive' => true, 
+    'hierarchical' => true,
+    'menu_position' => 20,
+    'supports' => array('title'),
+  'taxonomies' => array() 
+  ); 
+  register_post_type('ad',$args);
     
-    if($post_type=='teams') {
-        switch ( $column ) {
-            case 'jobtitle' :
-                $jobtitle = get_field("jobtitle",$post_id);
-                echo ($jobtitle) ? $jobtitle : '';
-                break;
+} // End Custom Post Types
 
-            case 'photo' :
-                $img = get_field('image',$post_id);
-                $img_src = ($img) ? $img['sizes']['medium'] : '';
-                $the_photo = '<span class="tmphoto" style="display:inline-block;width:50px;height:50px;background:#e2e1e1;text-align:center;border:1px solid #CCC;overflow:hidden;">';
-                if($img_src) {
-                   $the_photo .= '<span style="display:block;width:100%;height:100%;background:url('.$img_src.') top center no-repeat;background-size:cover;transform:scale(1.2)"></span>';
-                } else {
-                    $the_photo .= '<i class="dashicons dashicons-businessperson" style="font-size:25px;position:relative;top:13px;left: -3px;opacity:0.3;"></i>';
-                }
-                $the_photo .= '</span>';
-                echo $the_photo;
-                break;
-        }
-    }
-    
-}
+
+// WP Menu Categories
+add_action( 'init', 'build_taxonomies', 0 );
+ 
+function build_taxonomies() {
+  
+// Biodiversity Kingdom
+    register_taxonomy( 'kingdomtag', 'biodiversity',
+   array( 
+  'hierarchical' => false, 
+  'label' => 'Kingdom', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => false,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'kingdom' ),
+  '_builtin' => true
+  ) );
+  
+// Biodiversity Phylum
+    register_taxonomy( 'phylumtag', 'biodiversity',
+   array( 
+  'hierarchical' => false, 
+  'label' => 'Phylum', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => false,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'phylum' ),
+  '_builtin' => true
+  ) );
+  
+// Biodiversity Phylum
+    register_taxonomy( 'classtag', 'biodiversity',
+   array( 
+  'hierarchical' => false, 
+  'label' => 'Class', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => false,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'class' ),
+  '_builtin' => true
+  ) );
+  
+// Biodiversity Phylum
+    register_taxonomy( 'ordertag', 'biodiversity',
+   array( 
+  'hierarchical' => false, 
+  'label' => 'Order', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => false,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'order' ),
+  '_builtin' => true
+  ) );
+  
+// Biodiversity Family
+    register_taxonomy( 'familytag', 'biodiversity',
+   array( 
+  'hierarchical' => false, 
+  'label' => 'Family', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => false,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'family' ),
+  '_builtin' => true
+  ) );
+  
+// Biodiversity Genus
+    register_taxonomy( 'genustag', 'biodiversity',
+   array( 
+  'hierarchical' => false, 
+  'label' => 'Genus', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => false,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'genus' ),
+  '_builtin' => true
+  ) );
+  
+// Biodiversity Species
+    register_taxonomy( 'speciestag', 'biodiversity',
+   array( 
+  'hierarchical' => false, 
+  'label' => 'Species', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => false,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'species' ),
+  '_builtin' => true
+  ) );
+  
+// Biodiversity Classes
+    register_taxonomy( 'biodiversitycats', 'biodiversity',
+   array( 
+  'hierarchical' => true, 
+  'label' => 'Biodiversity Categories', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => true,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'biodiversity-category' ),
+  '_builtin' => true
+  ) );
+  
+// Biodiversity Classes Used for Sub Navigation on the Biodiversity Portal. 
+// Includes: Microbes, Fish and Invertebrates.
+    register_taxonomy( 'categories', 'biodiversity',
+   array( 
+  'hierarchical' => true, 
+  'label' => 'Classification', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => true,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'classification' ),
+  '_builtin' => true
+  ) );
+// Biology Classes
+    register_taxonomy( 'biocats', 'biology',
+   array( 
+  'hierarchical' => true, 
+  'label' => 'Biology Categories', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => true,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'biology_category' ),
+  '_builtin' => true
+  ) );
+  
+// Blog Categories
+    register_taxonomy( 'blogcats', 'blog',
+   array( 
+  'hierarchical' => true, 
+  'label' => 'Blog Categories', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => true,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'blog-category' ),
+  '_builtin' => true
+  ) );
+  
+// Filmmaking Categories
+    register_taxonomy( 'filmmakingcats', 'filmmaking',
+   array( 
+  'hierarchical' => true, 
+  'label' => 'Film Categories', 
+  'query_var' => true, 
+  'rewrite' => true ,
+  'show_admin_column' => true,
+  'public' => true,
+  'rewrite' => array( 'slug' => 'filmmaking-category' ),
+  '_builtin' => true
+  ) );
+  
+// For showing on Front Page  
+register_taxonomy( 'front_page',
+      array( 'blog','biodiversity','biology', 'filmmaking', 'page' ), // List Custom Post Types to show
+      array( 
+    'hierarchical' => true,
+      'label' => 'Show on Front Page?',               
+      'query_var' => true,
+    'show_admin_column' => true,
+      )
+);
+
+// For showing on Front Page  
+register_taxonomy( 'science_cat',
+      array( 'blog','biodiversity','biology', 'filmmaking', 'page' ), // List Custom Post Types to show
+      array( 
+        'hierarchical' => true, 
+        'label' => 'Science Category', 
+        'query_var' => true, 
+        'rewrite' => true ,
+        'show_admin_column' => true,
+        'public' => true,
+        'rewrite' => array( 'slug' => 'science-category' ),
+        '_builtin' => true
+      )
+);
+
+} // End build taxonomies

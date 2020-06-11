@@ -128,7 +128,7 @@ elseif ('biology' == get_post_type()) { // if viewing a Biology Taxonomy
 <div class="taxonomy-item">
 <?php if (count(get_post_ancestors($post->ID)) == 1) { ?>
 
-    <h2><?php echo get_page(array_pop(get_post_ancestors($post->ID)))->post_title; ?></h2>
+    <h2><?php echo get_page(array_pop(get_post_ancestors($post->ID)))->post_title; ?>-boo</h2>
 <?php
 $biology_pages = array(
     'depth' => 1,
@@ -144,10 +144,16 @@ $biology_pages = array(
     'post_status' => 'publish'
 );
 wp_list_pages($biology_pages);
+// $tax = get_terms(array(
+// 	'taxonomy' => 'biocats'
+// ));
+// echo '<pre>';
+// print_r($tax);
+// echo '</pre>';
 ?>
 </ul>
 <?php } else { ?>
-<h2><?php echo get_page(array_pop(get_post_ancestors($post->ID)))->post_title; ?></h2>
+<h2><?php echo get_page(array_pop(get_post_ancestors($post->ID)))->post_title; ?><?php e//cho $post->ID; ?></h2>
 <?php
 $biology_pages = array(
     'depth' => 1,
@@ -164,6 +170,17 @@ $biology_pages = array(
     'post_status' => 'publish'
 );
 wp_list_pages($biology_pages);
+$tax = get_terms(array(
+	'taxonomy' => 'biocats'
+));
+// echo '<pre>';
+// print_r($tax);
+// echo '</pre>';
+// foreach( $tax as $t ) {
+// 	$link = get_term_link( $t->term_id );
+// 	$name = $t->name;
+// 	echo '<li><a href="'.$link.'">'.$name.'</a></li>';
+// }
 ?>
 </ul>
 

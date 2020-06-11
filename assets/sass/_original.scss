@@ -17,7 +17,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 body {
 	background-image:url(images/bg-body.jpg);
 	background-repeat:repeat-x;
-	// background-color: #EEE;
+	background-color: #EEE;
 	margin-top: 0px;
 	font-family: 'Istok Web', sans-serif;
 	/*font-family: 'Archivo Narrow', sans-serif;*/
@@ -1354,13 +1354,16 @@ width: 220px;
 	line-height: 23px;
 }
 .green {
-	background-color: #00845D;
+	// background-color: #00845D;
+	background-color: #3d090e;
 }
 .purple {
-	background-color: #565F98;
+	// background-color: #565F98;
+	background-color: #2d2d2d;
 }
 .orange {
-	background-color: #D56431;
+	// background-color: #D56431;
+	background-color: #000;
 }
 .grey {
 	background-color: #2D2D2D;

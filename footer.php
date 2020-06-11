@@ -1,3 +1,74 @@
+	
+<?php 
+wp_reset_postdata();
+wp_reset_query();
+if ( !is_front_page() ) : ?>
+        
+       
+        <div id="footer-slider-container">
+        <h3>New From Untamed Science</h3>
+        	<div id="front-page-rotation">
+             <div id="flexslider">
+                <div class="flexslider">
+                <ul id="mycarousel" class="jcarousel-skin-tango">
+            
+            
+           <?php
+		   
+		   /* Custom Query to pull all posts with the Front Page Category Custom Taxonomy
+		      from 4 different Custom Post Types that are listed in the Array Below */
+		   
+           $args = array(
+		   
+            'post_type' => array('blog','biodiversity', 'filmmaking', 'biology'), //You list of Custom Post Types
+            'posts_per_page' => '100', // # of posts to show
+			'tax_query' => array(  //Custom Taxonomy "front_page"
+				array(       // array within an array
+					'taxonomy' => 'front_page', // Name when registering CT
+					'field' => 'slug',
+					'terms' => 'front-page' // slug created by WP when you make your entry
+				)
+			)
+                
+            );
+            $query = new WP_Query( $args );  // Query all of your arguments from above
+           ?>
+           <?php if (have_posts()) : while( $query->have_posts() ) : $query->the_post(); // the loop ?>
+           
+           <li class="hideitemonload">
+           		<?php $post_type = get_post_type( get_the_ID() ); // Get the post type so you can style your div according to the post type ?>
+           
+                      <div class="homepage-thumb <?php echo $post_type."-home" // post type turned into a class ?>">
+                      <a href="<?php the_permalink(); ?>" >
+                        <?php if ( has_post_thumbnail() ) {  ?>
+                               <?php the_post_thumbnail( 'homepage_thumb' ); ?>
+                        <?php } else { ?><img src="<?php bloginfo('template_url'); ?>/images/default-homepage-thumb.png" /><?php } ?>
+                             <div class="homepage-thumb-title-slider">
+                             <?php if(get_field('alternate_title')) { ?>
+<?php the_field('alternate_title'); ?>
+<?php } else { ?>
+<?php the_title(); ?>
+<?php } ?>
+                             </div><!-- homepage-thumb title slider -->
+                         </a>
+                          </div><!-- homepage thumb --> 
+              
+            </li>
+            <?php  endwhile; endif; wp_reset_postdata();  // close loop ?>
+             <!-- Rewind and Reset -->
+				<?php  //wp_reset_query(); // Reset Query  ?> 
+                <?php  //rewind_posts(); ?>
+            </div><!-- #frobt page rotation -->
+            </ul><!-- /slides -->
+			</div><!-- /flexslider -->
+            </div><!-- /flexslider -->
+            
+            
+            </div><!-- /footer slider container -->
+            
+            
+         <?php endif; ?>
+
 	</div><!-- #content -->
 
 	<?php  
@@ -97,7 +168,55 @@
 </div><!-- #page -->
 <div id="modalContainer"></div>
 <?php wp_footer(); ?>
+<script type="text/javascript" charset="utf-8">
+    // Can also be used with $(document).ready()
 
+   $(window).load(function() {
+  // $('.flexslider').flexslider({
+  //   animation: "slidereffect",
+  //       animationLoop: true,
+  //       easing: "linear",
+  //       useCSS: false,
+  //       randomize: false,
+  //       pauseOnHover: true,
+  //       slideshowSpeed: 12,
+  //       animationSpeed: 8000,
+  //       controlNav: false,
+  //       directionNav: true,
+  //       itemWidth: 220,
+  //       itemMargin: 5,
+		
+  // });
+  
+  
+  // set up and load the front page carousel
+  jQuery('#mycarousel').jcarousel({
+    	wrap: 'circular',
+		auto: 0,
+		scroll: 1,
+		animation: 400,
+    });
+	
+	// WE added a css of display: none to the list itme so it doesn't flicker or look weird when it's loading
+	// But we need to remove that class on load to see the carousel 
+ jQuery('ul#mycarousel li').removeClass('hideitemonload');
+
+  // this is dfor the isotope jquery for the blog roll
+  // we load it int eh alpha container and spit it out in the beta container
+  var $alpha = $('#alpha');
+  var $container = $('#beta');
+  var $checkboxes = $('#filters input');
+  
+  // init isotope, then insert all items from hidden #alpha
+ 
+ 
+  $container.isotope({
+  	itemSelector: '.blog-square',
+	animationEngine: 'best-available',
+  }).isotope( 'insert', $alpha.find('.blog-square') );
+  
+});
+  </script>
 
 </body>
 </html>

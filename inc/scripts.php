@@ -6,7 +6,8 @@ function bellaworks_scripts() {
 	wp_enqueue_style( 'bellaworks-style', get_stylesheet_uri() );
 
 	wp_deregister_script('jquery');
-		wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', false, '3.4.1', false);
+		wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', false, '1.8.3', false);
+		// wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', false, '3.4.1', false);
 		wp_enqueue_script('jquery');
 
 		// other scripts...
@@ -22,6 +23,21 @@ function bellaworks_scripts() {
 			get_bloginfo('template_directory') . '/assets/js/script.js',
 			array('jquery') );
 		wp_enqueue_script('script');
+
+		// other scripts...
+		wp_register_script(
+			'flexslider',
+			get_bloginfo('template_directory') . '/assets/js/flexslider.js',
+			array('jquery') );
+		wp_enqueue_script('flexslider');
+
+
+		// other scripts...
+		wp_register_script(
+			'jcarousel',
+			get_bloginfo('template_directory') . '/assets/js/vendors/jquery.jcarousel.js',
+			array('jquery') );
+		wp_enqueue_script('jcarousel');
 		
 		
 		// other scripts...

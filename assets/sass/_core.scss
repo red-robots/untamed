@@ -63,13 +63,23 @@ body {
 		z-index: 100000; /* Above WP toolbar. */
 	}
 }
+#primary {
+	width: 100%;
+	float: left;
+	background-color: #efefef;
+}
 .wrapper {
-	max-width: 1200px;
+	max-width: 1095px;
 	width: 100%;
 	margin: 0 auto;
 	padding-left: 30px;
 	padding-right: 30px;
 	position: relative;
+}
+body.home {
+	.wrapper {
+		max-width: 1200px;
+	}
 }
 .flexwrap {
 	@include flexgroup();
@@ -413,15 +423,24 @@ body {
 	
 	float:left;
 	padding: 20px 20px 30px 20px;
+	background-color: #fff;
 	@media screen and (min-width: $tabwidth) {
 		width: 67.666%;
+	}
+	@media screen and (min-width: $deskwidth) {
+		// width: 67.666%;
+		width: 735px;
 	}
 }
 #sidebar {
 	width: 100%;
 	float: right;
+	background-color: #fff;
 	@media screen and (min-width: $tabwidth) {
 		width: 27.666%;
+	}
+	@media screen and (min-width: $deskwidth) {
+		width: 300px;
 	}
 }
 #alpha {
@@ -1486,7 +1505,7 @@ body.subpage #content {
 		margin-top: 0;
 	}
 	.default {
-		margin-top: 30px;
+		// margin-top: 30px;
 		padding-bottom: 50px;
 		.site-main.wrapper {
 			padding-right: 30px;
