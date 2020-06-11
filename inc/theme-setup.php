@@ -38,6 +38,10 @@ function bellaworks_setup() {
   register_nav_menus( array(
     'primary' => esc_html__( 'Primary', 'bellaworks' ),
     'sitemap' => esc_html__( 'Sitemap', 'bellaworks' ),
+    'tree-of-life' => esc_html__( 'Biodiversity Menu', 'bellaworks' ),
+    'biology' => esc_html__( 'Biology Menu', 'bellaworks' ),
+    'footermenu' => esc_html__( 'Footer Menu', 'bellaworks' ),
+    'othersites' => esc_html__( 'Other Sites', 'bellaworks' ),
   ) );
 
   /*

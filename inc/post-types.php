@@ -17,26 +17,34 @@ function js_custom_init() {
             'supports'  => array('title','editor','thumbnail')
         ),
         array(
-            'post_type' => 'testimonials',
-            'menu_name' => 'Testimonials',
-            'plural'    => 'Testimonials',
-            'single'    => 'Testimonial',
+            'post_type' => 'biodiversity',
+            'menu_name' => 'Biodiversity',
+            'plural'    => 'Biodiversity',
+            'single'    => 'Biodiversity',
             'menu_icon' => 'dashicons-format-quote',
             'supports'  => array('title','editor')
         ),
         array(
-            'post_type' => 'teams',
-            'menu_name' => 'Teams',
-            'plural'    => 'Teams',
-            'single'    => 'Team',
+            'post_type' => 'filmmaking',
+            'menu_name' => 'Filmmaking',
+            'plural'    => 'Filmmaking',
+            'single'    => 'Filmmaking',
             'menu_icon' => 'dashicons-groups',
             'supports'  => array('title','editor')
         ),
         array(
-            'post_type' => 'location',
-            'menu_name' => 'Locations',
-            'plural'    => 'Locations',
-            'single'    => 'Location',
+            'post_type' => 'biology',
+            'menu_name' => 'Biology',
+            'plural'    => 'Biology',
+            'single'    => 'Biology',
+            'menu_icon' => 'dashicons-location',
+            'supports'  => array('title','editor')
+        ),
+        array(
+            'post_type' => 'ad',
+            'menu_name' => 'Ads',
+            'plural'    => 'Ads',
+            'single'    => 'Ads',
             'menu_icon' => 'dashicons-location',
             'supports'  => array('title','editor')
         )
@@ -102,13 +110,109 @@ add_action( 'init', 'ii_custom_taxonomies', 0 );
 function ii_custom_taxonomies() {
         $posts = array(
             array(
-                'post_type' => 'teams',
-                'menu_name' => 'Team Groups',
-                'plural'    => 'Team Groups',
-                'single'    => 'Team Group',
-                'taxonomy'  => 'team-groups',
-                'rewrite'   => 'team'
+                'post_type' => 'biodiversity',
+                'menu_name' => 'Kingdom',
+                'plural'    => 'Kingdom',
+                'single'    => 'Kingdom',
+                'taxonomy'  => 'kingdomtag',
+                'rewrite'   => 'kingdom'
             ),
+            array(
+                'post_type' => 'biodiversity',
+                'menu_name' => 'Phylum',
+                'plural'    => 'Phylum',
+                'single'    => 'Phylum',
+                'taxonomy'  => 'phylumtag',
+                'rewrite'   => 'phylum'
+            ),
+            array(
+                'post_type' => 'biodiversity',
+                'menu_name' => 'Class',
+                'plural'    => 'Class',
+                'single'    => 'Class',
+                'taxonomy'  => 'classtag',
+                'rewrite'   => 'class'
+            ),
+            array(
+                'post_type' => 'biodiversity',
+                'menu_name' => 'Order',
+                'plural'    => 'Order',
+                'single'    => 'Order',
+                'taxonomy'  => 'ordertag',
+                'rewrite'   => 'order'
+            ),
+            array(
+                'post_type' => 'biodiversity',
+                'menu_name' => 'Family',
+                'plural'    => 'Family',
+                'single'    => 'Family',
+                'taxonomy'  => 'familytag',
+                'rewrite'   => 'family'
+            ),
+            array(
+                'post_type' => 'biodiversity',
+                'menu_name' => 'Genus',
+                'plural'    => 'Genus',
+                'single'    => 'Genus',
+                'taxonomy'  => 'genustag',
+                'rewrite'   => 'genus'
+            ),
+            array(
+                'post_type' => 'biodiversity',
+                'menu_name' => 'Species',
+                'plural'    => 'Species',
+                'single'    => 'Species',
+                'taxonomy'  => 'speciestag',
+                'rewrite'   => 'species'
+            ),
+            array(
+                'post_type' => 'biodiversity',
+                'menu_name' => 'Biodiversity',
+                'plural'    => 'Biodiversity',
+                'single'    => 'Biodiversity',
+                'taxonomy'  => 'biodiversitycats',
+                'rewrite'   => 'biodiversity-category'
+            ),
+            array(
+                'post_type' => 'biodiversity',
+                'menu_name' => 'Classification',
+                'plural'    => 'Classification',
+                'single'    => 'Classification',
+                'taxonomy'  => 'categories',
+                'rewrite'   => 'classification'
+            ),
+            array(
+                'post_type' => 'biology',
+                'menu_name' => 'Biology Categories',
+                'plural'    => 'Biology Categories',
+                'single'    => 'Biology Categories',
+                'taxonomy'  => 'biocats',
+                'rewrite'   => 'biology_category'
+            ),
+            array(
+                'post_type' => 'blog',
+                'menu_name' => 'Blog Categories',
+                'plural'    => 'Blog Categories',
+                'single'    => 'Blog Categories',
+                'taxonomy'  => 'blogcats',
+                'rewrite'   => 'blog-category'
+            ),
+            array(
+                'post_type' => 'filmmaking',
+                'menu_name' => 'Film Categories',
+                'plural'    => 'Film Categories',
+                'single'    => 'Film Categories',
+                'taxonomy'  => 'filmmakingcats',
+                'rewrite'   => 'filmmaking-category'
+            ),
+            // array(
+            //     'post_type' => array( 'blog','biodiversity','biology', 'filmmaking' ),
+            //     'menu_name' => 'Show on Front Page?',
+            //     'plural'    => 'Show on Front Page?',
+            //     'single'    => 'Show on Front Page?',
+            //     'taxonomy'  => 'front_page',
+            //     'rewrite'   => 'front'
+            // ),
         );
     
     if($posts) {

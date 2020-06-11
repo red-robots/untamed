@@ -222,6 +222,9 @@ body {
 		max-height: auto;
 		opacity: 0;
 		overflow: hidden;
+		@media screen and (min-width: $tabwidth) {
+			pointer-events: none;
+		}
 		&:before {
 			content:"";
 			display: inline-block;
@@ -255,6 +258,9 @@ body {
 		opacity: 1;
 		max-height: auto;
 		overflow: visible;
+		@media screen and (min-width: $tabwidth) {
+			pointer-events: auto;
+		}
 		&:before {
 			top: 12px;
 		}
@@ -403,7 +409,58 @@ body {
 		
 	}
 }
-
+#page-left {
+	
+	float:left;
+	padding: 20px 20px 30px 20px;
+	@media screen and (min-width: $tabwidth) {
+		width: 67.666%;
+	}
+}
+#sidebar {
+	width: 100%;
+	float: right;
+	@media screen and (min-width: $tabwidth) {
+		width: 27.666%;
+	}
+}
+#alpha {
+	@media screen and (min-width: $tabwidth) {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+}
+.ad {
+	width: 100%;
+	float: left;
+	margin: 30px 0;
+}
+.blog-square {
+	width: 90%;
+	
+	position: relative;
+	// margin-right: 28px;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #B7B7B7;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #CCC;
+	border-right-color: #CCC;
+	border-left-color: #CCC;
+	display: block;
+	margin-bottom: 40px;
+	@media screen and (min-width: $tabwidth) {
+		width: 48%;
+		align-items: flex-start;
+	}
+}
 /* Banner */
 .slideOuterWrap {
 	width: 100%;
