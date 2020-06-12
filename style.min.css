@@ -545,6 +545,7 @@ body.home .wrapper{max-width:1200px}
 .menu-toggle.open span.bar:after{-webkit-transform:translateY(-13px) rotate(-45deg);transform:translateY(-13px) rotate(-45deg)}
 #page-left{float:left;padding:20px 20px 30px 20px;background-color:#fff}
 #sidebar{width:100%;float:right;background-color:#fff}
+main#main{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:stretch;-ms-flex-align:stretch;align-items:stretch;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
 .ad{width:100%;float:left;margin:30px 0}
 .blog-square{width:90%;position:relative;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:#b7b7b7;border-top-width:1px;border-right-width:1px;border-left-width:1px;border-top-style:solid;border-right-style:solid;border-left-style:solid;border-top-color:#CCC;border-right-color:#CCC;border-left-color:#CCC;display:block;margin-bottom:40px}
 .slideOuterWrap{width:100%;float:left;position:relative;z-index:30;margin-top:70px}

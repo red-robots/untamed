@@ -355,13 +355,13 @@ jQuery(document).ready(function ($) {
 			// init Isotope
 			
 
-			var $grid = $('#alpha').imagesLoaded( function() {
-			  // init Isotope after all images have loaded
-			  $grid.isotope({
-			    // options...
-			    itemSelector: '.blog-square',
-				animationEngine: 'best-available',
-			  });
-			});
+			// var $grid = $('#alpha').imagesLoaded( function() {
+			//   // init Isotope after all images have loaded
+			//   $grid.isotope({
+			//     // options...
+			//     itemSelector: '.blog-square',
+			// 	animationEngine: 'best-available',
+			//   });
+			// });
 
 });// END #####################################    END

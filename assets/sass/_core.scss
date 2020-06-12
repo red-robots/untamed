@@ -443,6 +443,12 @@ body.home {
 		width: 300px;
 	}
 }
+main#main {
+	width: 100%;
+	display: flex;
+	align-items: stretch;
+	flex-direction: row;
+}
 #alpha {
 	@media screen and (min-width: $tabwidth) {
 		display: flex;
