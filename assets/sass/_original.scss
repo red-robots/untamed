@@ -1112,7 +1112,7 @@ padding: 10px;
 	color:#D56431;
 }
  .content-entry-footer {
-		width: 400px;
+		width: 300px;
 		float: left; 
  }
 .content-entry-footer li  {
@@ -1158,7 +1158,12 @@ padding: 10px;
 	margin-left: 50px;
 }
 
-
+.fb-like, iframe#twitter-widget-0 {
+	width: 65px;
+	display: inline-block;
+	margin: 0 10px 0 0;
+	float: left;
+}
 
 
 /**
@@ -1171,7 +1176,8 @@ padding: 10px;
 	position: relative;
 	float:left;
 	max-width: 670px;
-	padding: 0px 20px;
+	// padding: 5%;
+	padding: 10px;
 	text-align: left; /* gallery & video post formats */
 	width: 100%;
 	background-color: #F1F1F1;
@@ -1186,61 +1192,72 @@ p.author-bio  {
 	line-height: 20px
 }
 .author-date {
-	position: absolute;
-	top:-4px;
-	right: 0px;
-	width: 220px;
-	height: 50px;
+	width: 90%;
 	border-top-width: 4px;
 	border-top-style: solid;
 	border-top-color: #CCC;
 	color: #D56431;
 	background-color: #FFF;
-	padding: 10px;
+	padding: 5%;
+	@media screen and (min-width: $tabwidth) {
+		position: absolute;
+		top:-4px;
+		right: 0px;
+		width: 220px;
+		height: 50px;
+		padding: 10px;
+		margin-left: 0;
+	}
 }
 .author-share {
-	position: absolute;
-	top:40px;
-	right: 0px;
-	width: 220px;
-	height: 50px;
+	width: 90%;
 	border-top-width: 4px;
 	border-top-style: solid;
 	border-top-color: #CCC;
 	color: #D56431;
 	background-color: #FFF;
-	padding: 10px;
+	padding: 5%;
+	@media screen and (min-width: $tabwidth) {
+		position: absolute;
+		top:40px;
+		right: 0px;
+		width: 220px;
+		// height: 50px;
+		padding: 10px;
+		margin-left: 0;
+	}
 }
 .author-links {
-	/*width: 30px;*/
-	margin-top: 5px;	
+	width: 90%;
+	// padding: 5%;
+	@media screen and (min-width: $tabwidth) {
+
+	}	
 }
 .author-link {
 	width: auto;
-	float:left;
-	padding:3px;	
+	display: inline-block;
+	margin: 3px;
+	@media screen and (min-width: $tabwidth) {
+
+	}
 }
-.author-link a{
-	width: auto;
-	float:left;
-	padding:2px;
-	background-color: #F00;
+.author-link a {
 	display: block;
+	padding:3px 5px;
 	background-color: #FAFAFA;
-	display: block;
 	border: 1px solid #CCC;
 	color: #666;
 	text-decoration:none;
 	font-size:10px;
+	-moz-transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-os-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
 }
 .author-link a:hover{
-	width: auto;
-	float:left;
-	background-color: #F00;
-	display: block;
 	background-color: #D56431;
-	display: block;
-	border: 1px solid #CCC;
 	color: #FFF;
 }
 .author.sidebar .author-info {
@@ -1248,9 +1265,6 @@ p.author-bio  {
 	padding: 30px 376px 10px 60px;
 }
 
-.single .author-info {
-	padding: 50px 0 0;
-}
 
 .author-avatar .avatar {
 	float: left;
@@ -1264,7 +1278,15 @@ p.author-bio  {
 .author-description  {
 	
 	margin: 0 0 8px;
-	width: 420px;
+	width: 100%;
+	@media screen and (min-width: $tabwidth) {
+		margin: 0 0 8px;
+		width: 50%;
+	}
+	@media screen and (min-width: $deskwidth) {
+		margin: 0 0 8px;
+		width: 420px;
+	}
 }
 h3.author-title {
 	font-size: 14px;
@@ -1283,43 +1305,47 @@ h3.author-title {
 }
 
 .read-all-author  {
-	position: absolute;
-	width: 240px;
-	top: 110px;
-	right: 0px;
-	display: block;
-	
+	width: 100%;
+	@media screen and (min-width: $tabwidth) {
+		position: absolute;
+		width: 220px;
+		top: 110px;
+		right: 0px;
+		display: block;
+		margin-left: 0;
+	}
 }
 .read-all-author a {
-padding: 10px;
-width: 220px;
+	width: 90%;
+	padding: 5%;
 	background-color:#fff;
 	color: #D56431;
 	text-decoration: none;
 	display: block;
-	border-top-width: 4px;
-	border-top-style: solid;
-	border-top-color: #ccc;
+	border-top: 4px solid #ccc;
+	-moz-transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease;
+	-os-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	@media screen and (min-width: $tabwidth) {
+		padding: 10px;
+		display: block;
+		width: 100%;
+	}
 }
 .read-all-author a:hover {
-	padding: 10px;
 	background-color:#D56431;
 	color: #fff;
-	border-top-width: 4px;
-	border-top-style: solid;
-	border-top-color: #D56431;
+	border-top: 4px solid #d56431;
 }
 .author-archive-bio {
-	width: 700px;
-	padding: 10px;
-	border-top-width: 3px;
-	border-bottom-width: 3px;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-top-color: #CCC;
-	border-bottom-color: #CCC;
+	width: 90%;
+	padding: 5%;
+	border-bottom: 3px solid #ccc;
+	border-top: 3px solid #ccc;
 	margin-bottom: 20px;
-} 
+}
 
 /*  
 	Sidebar  Structure  
@@ -1925,12 +1951,14 @@ p.comment-form-comment {
 	overflow: hidden;	
 	
 }
+
+#footer {width: 920px;}*/
 #page-left {
-	width: 620px;
+	// width: 620px;
+	width: 100%;
 	float:left;
 	padding: 20px 20px 30px 20px;
 }
-#footer {width: 920px;}*/
 #header-social {
 	
 	display: none;

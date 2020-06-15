@@ -13,16 +13,17 @@ get_header(); ?>
 		<main id="main" class="site-main wrapper" role="main">
 			<div id="page-left">
 		<?php
-		while ( have_posts() ) : the_post();
+		while ( have_posts() ) : the_post(); ?>
 
-			get_template_part( 'parts/content', get_post_format() );
-
-			the_post_navigation();
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+			<div class="content-entry">
+				<?php the_content(); ?>
+			</div><!-- content - entry -->
+        
+		<?php 
+			get_template_part( 'includes/share-page' ); 
+			get_template_part( 'includes/author-bio' );
+			comments_template(); 
+			
 
 		endwhile; // End of the loop.
 		?>

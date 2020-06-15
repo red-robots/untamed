@@ -9,6 +9,14 @@
 <!-- <link rel="stylesheet" href="<?php bloginfo('template_url') ?>/css/jquery.fancybox.min.css"> -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=219473481428768";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <?php wp_head(); ?>
 </head>
 
@@ -48,6 +56,11 @@
 		</div><!-- wrapper -->
 	</header><!-- #masthead -->
 
-	<?php get_template_part("parts/banner"); ?>
+	<?php 
+
+	 get_template_part('parts/subnav');
+	get_template_part("parts/banner"); 
+
+	?>
 
 	<div id="content" class="site-content cf">

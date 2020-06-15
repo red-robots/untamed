@@ -168,6 +168,7 @@ if ( !is_front_page() ) : ?>
 </div><!-- #page -->
 <div id="modalContainer"></div>
 <?php wp_footer(); ?>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 <script type="text/javascript" charset="utf-8">
     // Can also be used with $(document).ready()
 

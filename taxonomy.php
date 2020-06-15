@@ -9,7 +9,7 @@ get_header(); ?>
 	
         
  <?php //if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>       
-
+<!-- taxonomy -->
  <div id="primary" class="content-area default">
   <main id="main" class="site-main wrapper" role="main">      
 <div id="page-left">
@@ -21,6 +21,10 @@ get_header(); ?>
 $queried_object = get_queried_object(); 
 $taxonomy = $queried_object->taxonomy;
 $term_id = $queried_object->term_id;  
+
+// echo '<pre>';
+// print_r($queried_object);
+// echo '</pre>';
  
 // load thumbnail for this taxonomy term
 $taxAlternateTitle = get_field('tax_alternate_title', $taxonomy . '_' . $term_id);
