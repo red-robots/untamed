@@ -21,7 +21,7 @@
 <?php the_title(); ?>
 <?php } ?>
 </h2>
-<div class="content-entry">
+<div class="content-entry ">
  <?php the_content(); ?>
  </div><!-- content - entry -->
 <?php endwhile; endif; ?>

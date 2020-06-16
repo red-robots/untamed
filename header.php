@@ -63,4 +63,17 @@
 
 	?>
 
+	<?php 
+    if(!is_front_page()) { 
+      if ( function_exists('yoast_breadcrumb') ) { ?>
+      <div class="bread">
+          <div class="wrapper">
+            <?php $breadcrumbs = yoast_breadcrumb( '<li>', '</li>', false );
+            echo str_replace( '|', ' </li><li>', $breadcrumbs ); ?>
+          </div><!-- wrapper -->
+     </div><!-- bread -->
+     <?php } 
+    } 
+  ?>
+
 	<div id="content" class="site-content cf">

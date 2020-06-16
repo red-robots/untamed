@@ -357,6 +357,13 @@ h3.page-title {
 	width: 100%;
 	min-height: 10px;
 	background-color: #2E2E2E;
+	margin-top: 70px;
+	overflow: hidden;
+	padding: 10px;
+	@media screen and (min-width: $midwidth) {
+		margin-top:0;
+		padding: 0;
+	}
 }
 #front-page-rotation {
 	position: realative;
@@ -366,9 +373,13 @@ h3.page-title {
 }
 #tree-nav {
 	position: realative;
-	width: 960px;
-	height: 57px;
+	
 	margin: 0 auto;
+	@media screen and (min-width: $midwidth) {
+		// width: 960px;
+		width: 100%;
+		height: 57px;
+	}
 }
 #tree-nav  ul {
 	margin: 0px;
@@ -384,12 +395,20 @@ h3.page-title {
 #tree-nav  ul a {
 	
 	text-decoration: none;
-	background-image: url(images/sub-menu.jpg);
-	background-repeat: no-repeat;
+	color: #fff;
 	display: block;
-	height: 57px;
-	text-indent: -9000px;
+	padding: 3px 7px;
+	border: 2px solid #fff;
 	position: relative;
+	margin-bottom: 5px;
+	@media screen and (min-width: $midwidth) {
+		height: 57px;
+		text-indent: -9000px;
+		background-image: url(images/sub-menu.jpg);
+		background-repeat: no-repeat;
+		border: 0;
+		padding: 0;
+	}
 }
 #tree-nav  .microbes a {
 	width:98px;
@@ -1373,11 +1392,12 @@ h3.author-title {
 .sideitem h2 {
 	margin-bottom: 5px;
 }
-.sideitem h3 {
+.sideitem h3, .sideitem h3 a {
 	font-size: 18px;
 	font-weight: 300;
 	letter-spacing: 2px;
 	line-height: 23px;
+	color: #fff;
 }
 .green {
 	// background-color: #00845D;
@@ -1963,7 +1983,7 @@ p.comment-form-comment {
 	
 	display: none;
 }
-@media only screen and (device-width: 600px) {
+@media only screen and (device-width: $xswidth) {
   /* For general iPad layouts */
 #header-social {
 	
@@ -1982,9 +2002,9 @@ p.comment-form-comment {
 	padding: 20px 20px 30px 20px;
 }
 .bread {
-	width:650px;
+	width:100%;
 	float:left;
-	background-color:#5B5B5B;
+	background-color: #2D2D2D;
 	color: #fff;
 	padding: 5px;
 }
@@ -2000,7 +2020,7 @@ p.comment-form-comment {
 	display: none;
 }
 }
-@media screen and (min-width: 960px) {
+@media screen and (min-width: $midwidth) {
   /* For general iPad layouts */
 // #main {
 // 	width: 1075px;
@@ -2021,9 +2041,9 @@ p.comment-form-comment {
 	padding: 20px 20px 30px 20px;
 }
 .bread {
-	width:765px;
+	width:100%;
 	float:left;
-	background-color:#5B5B5B;
+	background-color: #2D2D2D;
 	color: #fff;
 	padding: 5px;
 }
