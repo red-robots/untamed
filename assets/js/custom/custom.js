@@ -7,10 +7,10 @@
 jQuery(document).ready(function ($) {
 
 	$("[href]").each(function() {
-    			if (this.href == window.location.href) {
-        	$(this).addClass("active");
-        	}
-    		});
+		if (this.href == window.location.href) {
+			$(this).addClass("active");
+		}
+	});
 	
 	var swiper = new Swiper('#slideshow', {
 		effect: 'fade', /* "fade", "cube", "coverflow" or "flip" */
