@@ -210,47 +210,46 @@ input#search.formtip{width:150px}
 #header-social .youtube a:hover{background-position:-90px -45px}
 #tree-nav-container{position:realative;width:100%;min-height:10px;background-color:#2e2e2e;margin-top:70px;overflow:hidden;padding:10px}
 #front-page-rotation{position:realative;width:100%;height:190px;margin:0 auto}
-#tree-nav{position:realative;margin:0 auto}
+#tree-nav{position:relative;text-align:center;margin:0 auto;width:100%;padding:10px 0 0 0}
 #tree-nav ul{margin:0;padding:0;list-style-type:none;z-index:2;position:relative}
-#tree-nav ul li{float:left;position:relative}
+#tree-nav ul li{display:inline-block;position:relative}
 #tree-nav ul a{text-decoration:none;color:#fff;display:block;padding:3px 7px;border:2px solid #fff;position:relative;margin-bottom:5px}
-#tree-nav .microbes a{width:98px;background-position:-0 0;position:relative}
+#tree-nav .microbes a{background-position:-0 0;position:relative}
 #tree-nav .microbes a:hover,#tree-nav .microbes a.active{background-position:-0 -57px}
-#tree-nav .fungi a{background-position:-98px -0;width:92px;position:relative}
+#tree-nav .fungi a{background-position:-98px -0;position:relative}
 #tree-nav .fungi a:hover,#tree-nav .fungi a.active{background-position:-98px -57px}
-#tree-nav .plants a{background-position:-187px -0;width:86px;position:relative}
+#tree-nav .plants a{background-position:-187px -0;position:relative}
 #tree-nav .plants a:hover,#tree-nav .plants a.active{background-position:-187px -57px}
-#tree-nav .arthropods a{background-position:-273px -0;width:94px;position:relative}
+#tree-nav .arthropods a{background-position:-273px -0;position:relative}
 #tree-nav .arthropods a:hover,#tree-nav .arthropods a.active{background-position:-273px -57px}
-#tree-nav .invertebrates a{background-position:-367px -0;width:95px;position:relative}
+#tree-nav .invertebrates a{background-position:-367px -0;position:relative}
 #tree-nav .invertebrates a:hover,#tree-nav .invertebrates a.active{background-position:-367px -57px}
-#tree-nav .fish a{background-position:-462px -0;width:108px;position:relative}
+#tree-nav .fish a{background-position:-462px -0;position:relative}
 #tree-nav .fish a:hover,#tree-nav .fish a.active{background-position:-462px -57px}
-#tree-nav .amphibians a{background-position:-570px -0;width:96px;position:relative}
+#tree-nav .amphibians a{background-position:-570px -0;position:relative}
 #tree-nav .amphibians a:hover,#tree-nav .amphibians a.active{background-position:-570px -57px}
-#tree-nav .reptiles a{background-position:-666px -0;width:106px;position:relative}
+#tree-nav .reptiles a{background-position:-666px -0;position:relative}
 #tree-nav .reptiles a:hover,#tree-nav .reptiles a.active{background-position:-666px -57px}
-#tree-nav .birds a{background-position:-772px -0;width:90px;position:relative}
+#tree-nav .birds a{background-position:-772px -0;position:relative}
 #tree-nav .birds a:hover,#tree-nav .birds a.active{background-position:-771px -57px}
-#tree-nav .mammals a{background-position:-862px -0;width:105px;position:relative}
+#tree-nav .mammals a{background-position:-862px -0;position:relative}
 #tree-nav .mammals a:hover,#tree-nav .mammals a.active{background-position:-862px -57px}
-#tree-nav .cells a{background-position:-976px -0;width:110px;position:relative}
+#tree-nav .cells a{background-position:-976px -0;position:relative}
 #tree-nav .cells a:hover,#tree-nav .cells a.active{background-position:-976px -57px}
-#tree-nav .biomes a{background-position:-1071px -0;width:96px;position:relative}
+#tree-nav .biomes a{background-position:-1071px -0;position:relative}
 #tree-nav .biomes a:hover,#tree-nav .biomes a.active{background-position:-1071px -57px}
-#tree-nav .genetics a{background-position:-1161px -0;width:99px;position:relative}
+#tree-nav .genetics a{background-position:-1161px -0;position:relative}
 #tree-nav .genetics a:hover,#tree-nav .genetics a.active{background-position:-1161px -57px}
-#tree-nav .plantbio a{background-position:-1242px -0;width:104px;position:relative}
+#tree-nav .plantbio a{background-position:-1242px -0;position:relative}
 #tree-nav .plantbio a:hover,#tree-nav .plantbio a.active{background-position:-1242px -57px}
-#tree-nav .evolution a{background-position:-1326px -0;width:88px;position:relative}
+#tree-nav .evolution a{background-position:-1326px -0;position:relative}
 #tree-nav .evolution a:hover,#tree-nav .evolution a.active{background-position:-1326px -57px}
-#tree-nav .ecology a{background-position:-1415px -0;width:88px;position:relative}
+#tree-nav .ecology a{background-position:-1415px -0;position:relative}
 #tree-nav .ecology a:hover,#tree-nav .ecology a.active{background-position:-1415px -57px}
-#tree-nav .human a{background-position:-1488px -0;width:84px;position:relative}
+#tree-nav .human a{background-position:-1488px -0;position:relative}
 #tree-nav .human a:hover,#tree-nav .human a.active{background-position:-1488px -57px}
-#tree-nav .human a,#tree-nav .ecology,#tree-nav .evolution,#tree-nav .plantbio,#tree-nav .cells,#tree-nav .biomes,#tree-nav .genetics{margin-right:55px}
-#tree-nav .microbes a,#tree-nav .fish,#tree-nav .reptiles,#tree-nav .mammals,#tree-nav .birds,#tree-nav .amphibians,#tree-nav .arthropods,#tree-nav .fungi,#tree-nav .plants{margin-right:10px}
-.nav-message{position:absolute;color:#fff;padding:10px;bottom:-50px;background-color:#333;border-radius:4px;width:auto;border:1px solid #FFF}
+#tree-nav .microbes a,#tree-nav .fish,#tree-nav .reptiles,#tree-nav .mammals,#tree-nav .birds,#tree-nav .amphibians,#tree-nav .arthropods,#tree-nav .fungi,#tree-nav .plants{margin-right:5px}
+.nav-message{display:none}
 .mess-fungi{left:15px}
 .mess-microbes{left:5px}
 .mess-fish{left:25px}
@@ -277,7 +276,7 @@ input#search.formtip{width:150px}
 .content-entry ul li li,#page-left ul li li{margin-left:15px;list-style-position:inside}
 #page-right{width:325px;float:left}
 #upper-classification li{display:inline-block;width:150px}
-.bread{width:620px;float:left;background-color:#5b5b5b;color:#fff;padding:5px}
+.bread{width:100%;float:left;background-color:#5b5b5b;color:#fff;padding:5px}
 .bread li{text-decoration:none;color:#7e7e7e;list-style-type:none}
 .bread li a{text-decoration:none;color:#7e7e7e}
 .bread li a:hover{color:#fff}
@@ -412,7 +411,7 @@ h3.author-title{font-size:14px;font-weight:bold;color:#999;margin-bottom:5px;mar
 .all-classifications{display:block}
 .all-classifications ul{display:block}
 .all-classifications li{margin-left:10px;list-style:none}
-#footer-container{width:100%;background-color:#0a0a0a}
+#footer-container{width:100%;background-color:#0a0a0a;clear:both}
 #footer-slider-container{width:100%;background-color:#3a3a3a}
 #footer-slider-container h3{margin-top:0;margin-bottom:5px;color:#ccc;width:300px;margin-left:auto;margin-right:auto;display:block;padding-top:5px}
 #footer{background-color:#0a0a0a;padding:20px;color:#999;overflow:hidden;margin:0 auto}
@@ -716,7 +715,6 @@ body.logged-in.admin-bar #wpadminbar{position:fixed !important;top:0;left:0}
 #main{width:960px;margin:0 auto;background-color:#FFF;overflow:hidden}
 #page-left{width:620px;float:left;padding:20px 20px 30px 20px}
 .bread{width:100%;float:left;background-color:#2d2d2d;color:#fff;padding:5px}
-#tree-nav{position:realative;width:960px;height:57px;margin:0 auto}
 #footer{width:920px}
 .search-glass{display:none}
 }@media(min-width:600px){.row1 div.image .wrapper .caption{margin-top:-15%}
@@ -726,7 +724,9 @@ body.logged-in.admin-bar #wpadminbar{position:fixed !important;top:0;left:0}
 .site-footer .footcolRight{width:100%;margin-top:30px;text-align:left;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}
 .site-footer .footcol:not(.fcol1){width:25%;margin-bottom:0}
 .site-footer .social-media{padding-bottom:0}
-}@media screen and (min-width:820px){.author-date{position:absolute;top:-4px;right:0;width:220px;height:50px;padding:10px;margin-left:0}
+}@media screen and (min-width:820px){#tree-nav-container{margin-top:0;padding:0}
+#tree-nav .human a,#tree-nav .ecology,#tree-nav .evolution,#tree-nav .plantbio,#tree-nav .cells,#tree-nav .biomes,#tree-nav .genetics{margin-right:25px}
+.author-date{position:absolute;top:-4px;right:0;width:220px;height:50px;padding:10px;margin-left:0}
 .author-share{position:absolute;top:40px;right:0;width:220px;padding:10px;margin-left:0}
 .author-description{margin:0 0 8px;width:50%}
 .read-all-author{position:absolute;width:220px;top:110px;right:0;display:block;margin-left:0}
@@ -766,10 +766,8 @@ body.subpage #content{margin-top:0}
 .site-footer .footcolRight{margin-top:0;width:75%}
 .site-footer .footcol:not(.fcol1) a{padding:2px 0}
 .stickToBottom .site-footer{position:fixed;left:0;bottom:0}
-}@media screen and (min-width:900px){#tree-nav-container{margin-top:0;padding:0}
-#tree-nav{width:100%;height:57px}
-#tree-nav ul a{height:57px;text-indent:-9000px;background-image:url(images/sub-menu.jpg);background-repeat:no-repeat;border:0;padding:0}
-#tree-nav{position:realative;width:1075px;height:57px;margin:0 auto}
+}@media screen and (min-width:900px){#tree-nav-container{overflow:visible}
+#tree-nav .human a,#tree-nav .ecology,#tree-nav .evolution,#tree-nav .plantbio,#tree-nav .cells,#tree-nav .biomes,#tree-nav .genetics{margin-right:35px}
 #page-left{width:735px;float:left;padding:20px 20px 30px 20px}
 .bread{width:100%;float:left;background-color:#2d2d2d;color:#fff;padding:5px}
 #header-social{width:135px;position:relative;float:right;z-index:6;display:block}
@@ -789,7 +787,29 @@ body.subpage #content{margin-top:0}
 .section-video-revised{padding-top:120px;padding-bottom:120px}
 .collaborations{padding-top:80px;padding-bottom:80px}
 .site-footer .footcolLeft{padding-right:50px}
-}@media screen and (min-width:1200px){.author-description{margin:0 0 8px;width:420px}
+}@media screen and (min-width:1060px){#tree-nav{padding:0;height:57px}
+#tree-nav ul a{height:52px;text-indent:-9000px;background-image:url(images/sub-menu.jpg);background-repeat:no-repeat;border:0;padding:0}
+#tree-nav .microbes a{width:98px}
+#tree-nav .fungi a{width:92px}
+#tree-nav .plants a{width:86px}
+#tree-nav .arthropods a{width:94px}
+#tree-nav .invertebrates a{width:95px}
+#tree-nav .fish a{width:108px}
+#tree-nav .amphibians a{width:96px}
+#tree-nav .reptiles a{width:106px}
+#tree-nav .birds a{width:90px}
+#tree-nav .mammals a{width:105px}
+#tree-nav .cells a{width:110px}
+#tree-nav .biomes a{width:96px}
+#tree-nav .genetics a{width:99px}
+#tree-nav .plantbio a{width:104px}
+#tree-nav .evolution a{width:88px}
+#tree-nav .ecology a{width:88px}
+#tree-nav .human a{width:84px}
+.nav-message{display:block;position:absolute;z-index:1000000;color:#fff;padding:10px;bottom:-50px;background-color:#333;border-radius:4px;width:auto;border:1px solid #FFF}
+}@media screen and (min-width:1200px){#tree-nav .human a,#tree-nav .ecology,#tree-nav .evolution,#tree-nav .plantbio,#tree-nav .cells,#tree-nav .biomes,#tree-nav .genetics{margin-right:55px}
+#tree-nav .microbes a,#tree-nav .fish,#tree-nav .reptiles,#tree-nav .mammals,#tree-nav .birds,#tree-nav .amphibians,#tree-nav .arthropods,#tree-nav .fungi,#tree-nav .plants{margin-right:5px}
+.author-description{margin:0 0 8px;width:420px}
 #page-left{width:780px}
 #sidebar{width:300px}
 }@media(min-width:1200px){.swiper-container .slideCaption .text{font-size:100px}

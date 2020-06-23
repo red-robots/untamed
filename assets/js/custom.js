@@ -279,7 +279,7 @@ jQuery(document).ready(function ($) {
     $(this).append("<div class='nav-message mess-evolution'>Evolution</div>");
   });
   $('li.evolution').mouseleave(function () {
-    $('.nav-message').remove();
+    $('.nav-message').remove(); // console.log('sadf');
   });
   $('li.ecology').mouseenter(function () {
     $(this).append("<div class='nav-message mess-ecology'>Ecology</div>");

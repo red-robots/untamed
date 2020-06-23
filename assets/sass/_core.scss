@@ -533,6 +533,9 @@ body.home main#main {
 	position: relative;
 	z-index: 30;
 	margin-top: 70px;
+	@media screen and (min-width: $midwidth) {
+		
+	}
 	@include tab {
 		margin-top: 0;
 	}

@@ -360,9 +360,13 @@ h3.page-title {
 	margin-top: 70px;
 	overflow: hidden;
 	padding: 10px;
-	@media screen and (min-width: $midwidth) {
+	@media screen and (min-width: $tabwidth) {
 		margin-top:0;
 		padding: 0;
+	}
+	@media screen and (min-width: $midwidth) {
+		
+		overflow: visible;
 	}
 }
 #front-page-rotation {
@@ -372,12 +376,14 @@ h3.page-title {
 	margin: 0 auto;
 }
 #tree-nav {
-	position: realative;
-	
+	position: relative;
+	text-align: center;
 	margin: 0 auto;
-	@media screen and (min-width: $midwidth) {
+	width: 100%;
+	padding: 10px 0 0 0;
+	@media screen and (min-width: $tree) {
 		// width: 960px;
-		width: 100%;
+		padding: 0;
 		height: 57px;
 	}
 }
@@ -389,7 +395,8 @@ h3.page-title {
 	position: relative;
 }
 #tree-nav  ul li {
-	float: left;
+	// float: left;
+	display: inline-block;
 	position: relative;
 }
 #tree-nav  ul a {
@@ -401,8 +408,8 @@ h3.page-title {
 	border: 2px solid #fff;
 	position: relative;
 	margin-bottom: 5px;
-	@media screen and (min-width: $midwidth) {
-		height: 57px;
+	@media screen and (min-width: $tree) {
+		height: 52px;
 		text-indent: -9000px;
 		background-image: url(images/sub-menu.jpg);
 		background-repeat: no-repeat;
@@ -411,9 +418,12 @@ h3.page-title {
 	}
 }
 #tree-nav  .microbes a {
-	width:98px;
+	
 	background-position: -0px 0px;
 	position: relative;
+	@media screen and (min-width: $tree) {
+		width:98px;
+	}
 	
 }
 #tree-nav  .microbes a:hover,#tree-nav  .microbes a.active {
@@ -422,146 +432,223 @@ h3.page-title {
 }
 #tree-nav  .fungi a {
 	background-position: -98px -0px;
-	width: 92px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 92px;
+	}
 }
 #tree-nav  .fungi a:hover,#tree-nav  .fungi a.active  {
 	background-position: -98px -57px;
 }
 #tree-nav  .plants a {
 	background-position: -187px -0px;
-	width: 86px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 86px;
+	}
 }
 #tree-nav  .plants a:hover,#tree-nav  .plants a.active {
 	background-position: -187px -57px;
 }
 #tree-nav  .arthropods a {
 	background-position: -273px -0px;
-	width: 94px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 94px;
+	}
 }
 #tree-nav  .arthropods a:hover,#tree-nav  .arthropods a.active {
 	background-position: -273px -57px;
 }
 #tree-nav  .invertebrates a {
 	background-position: -367px -0px;
-	width: 95px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 95px;
+	}
 }
 #tree-nav  .invertebrates a:hover,#tree-nav  .invertebrates a.active {
 	background-position: -367px -57px;
 }
 #tree-nav  .fish a {
 	background-position: -462px -0px;
-	width: 108px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 108px;
+	}
 }
 #tree-nav  .fish a:hover,#tree-nav  .fish a.active {
 	background-position: -462px -57px;
 }
 #tree-nav  .amphibians a {
 	background-position: -570px -0px;
-	width: 96px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 96px;
+	}
 }
 #tree-nav  .amphibians a:hover,#tree-nav  .amphibians a.active {
 	background-position: -570px -57px;
 }
 #tree-nav  .reptiles a {
 	background-position: -666px -0px;
-	width: 106px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 106px;
+	}
 }
 #tree-nav  .reptiles a:hover,#tree-nav  .reptiles a.active {
 	background-position: -666px -57px;
 }
 #tree-nav  .birds a {
 	background-position: -772px -0px;
-	width: 90px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 90px;
+	}
 }
 #tree-nav  .birds a:hover,#tree-nav  .birds a.active {
 	background-position: -771px -57px;
 }
 #tree-nav  .mammals a {
 	background-position: -862px -0px;
-	width: 105px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 105px;
+	}
 }
 #tree-nav  .mammals a:hover,#tree-nav  .mammals a.active {
 	background-position: -862px -57px;
 }
 #tree-nav  .cells a {
 	background-position: -976px -0px;
-	width: 110px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 110px;
+	}
 }
 #tree-nav  .cells a:hover,#tree-nav  .cells a.active {
 	background-position: -976px -57px;
 }
 #tree-nav  .biomes a {
 	background-position: -1071px -0px;
-	width: 96px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 96px;
+	}
 }
 #tree-nav  .biomes a:hover,#tree-nav  .biomes a.active {
 	background-position: -1071px -57px;
 }
 #tree-nav  .genetics a {
 	background-position: -1161px -0px;
-	width: 99px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 99px;
+	}
 }
 #tree-nav  .genetics a:hover,#tree-nav  .genetics a.active {
 	background-position: -1161px -57px;
 }
 #tree-nav  .plantbio a {
 	background-position: -1242px -0px;
-	width: 104px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 104px;
+	}
 }
 #tree-nav  .plantbio a:hover,#tree-nav  .plantbio a.active {
 	background-position: -1242px -57px;
 }
 #tree-nav  .evolution a {
 	background-position: -1326px -0px;
-	width: 88px;
-	position: relative;	
+	
+	position: relative;
+	@media screen and (min-width: $tree) {
+		width: 88px;
+	}	
 }
 #tree-nav  .evolution a:hover,#tree-nav  .evolution a.active {
 	background-position: -1326px -57px;
 }
 #tree-nav  .ecology a {
 	background-position: -1415px -0px;
-	width: 88px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 88px;
+	}
 }
 #tree-nav  .ecology a:hover,#tree-nav  .ecology a.active {
 	background-position: -1415px -57px;
 }
 #tree-nav  .human a {
 	background-position: -1488px -0px;
-	width: 84px;
+	
 	position: relative;	
+	@media screen and (min-width: $tree) {
+		width: 84px;
+	}
 	
 }
 #tree-nav  .human a:hover,#tree-nav  .human a.active {
 	background-position: -1488px -57px;
 }
-#tree-nav  .human a, #tree-nav  .ecology, #tree-nav  .evolution, #tree-nav  .plantbio,  #tree-nav  .cells, #tree-nav  .biomes, #tree-nav  .genetics {margin-right: 55px;}
-#tree-nav  .microbes a, #tree-nav  .fish, #tree-nav  .reptiles, #tree-nav  .mammals,  #tree-nav  .birds, #tree-nav  .amphibians, #tree-nav  .arthropods, #tree-nav  .fungi , #tree-nav  .plants/*, #tree-nav  .invertebrates*/{margin-right: 10px;} 
+#tree-nav  .human a, #tree-nav  .ecology, #tree-nav  .evolution, #tree-nav  .plantbio,  #tree-nav  .cells, #tree-nav  .biomes, #tree-nav  .genetics {
+	
+	@media screen and (min-width: $tabwidth) {
+		margin-right: 25px;
+	}
+
+	@media screen and (min-width: $midwidth) {
+		margin-right: 35px;
+	}
+	@media screen and (min-width: $deskwidth) {
+		margin-right: 55px;
+	}
+}
+#tree-nav  .microbes a, #tree-nav  .fish, #tree-nav  .reptiles, #tree-nav  .mammals,  #tree-nav  .birds, #tree-nav  .amphibians, #tree-nav  .arthropods, #tree-nav  .fungi , #tree-nav  .plants/*, #tree-nav  .invertebrates*/{
+	margin-right: 5px;
+	@media screen and (min-width: $tabwidth) {
+		// margin-right: 25px;
+	}
+
+	@media screen and (min-width: $midwidth) {
+		// margin-right: 35px;
+	}
+	@media screen and (min-width: $deskwidth) {
+		margin-right: 5px;
+	}
+} 
 .nav-message {
-	position: absolute;
-	color: #fff;
-	padding: 10px;
-	bottom: -50px;
-	background-color:#333;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	width: auto;
-	border: 1px solid #FFF;
+	display: none;
+	@media screen and (min-width: $tree) {
+		display: block;
+		position: absolute;
+		z-index: 1000000;
+		color: #fff;
+		padding: 10px;
+		bottom: -50px;
+		background-color:#333;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		width: auto;
+		border: 1px solid #FFF;
+	}
 }
 .mess-fungi {left: 15px}
 .mess-microbes {left: 5px}
@@ -626,7 +713,8 @@ h3.page-title {
 }
 /* Bread Crumbs  */
 .bread {
-	width:620px;
+	// width:620px;
+	width:100%;
 	float:left;
 	background-color:#5B5B5B;
 	color: #fff;
@@ -1504,6 +1592,7 @@ h3.author-title {
 #footer-container {
 	width: 100%;
 	background-color:#0A0A0A;	
+	clear: both;
 }
 #footer-slider-container {
 	width: 100%;
@@ -2008,12 +2097,12 @@ p.comment-form-comment {
 	color: #fff;
 	padding: 5px;
 }
-#tree-nav {
-	position: realative;
-	width: 960px;
-	height: 57px;
-	margin: 0 auto;
-}
+// #tree-nav {
+// 	// position: realative;
+// 	// width: 960px;
+// 	height: 57px;
+// 	margin: 0 auto;
+// }
 #footer {width: 920px;}
 .search-glass {
 	
@@ -2029,12 +2118,12 @@ p.comment-form-comment {
 // 	overflow: hidden;	
 	
 // }
-#tree-nav {
-	position: realative;
-	width: 1075px;
-	height: 57px;
-	margin: 0 auto;
-}
+// #tree-nav {
+// 	position: realative;
+// 	width: 1075px;
+// 	height: 57px;
+// 	margin: 0 auto;
+// }
 #page-left {
 	width: 735px;
 	float:left;

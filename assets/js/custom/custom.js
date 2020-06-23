@@ -309,6 +309,7 @@ jQuery(document).ready(function ($) {
 			});
 			$('li.evolution').mouseleave(function() {
 			$('.nav-message').remove();
+			// console.log('sadf');
 			});
 			
 			$('li.ecology').mouseenter(function() {
