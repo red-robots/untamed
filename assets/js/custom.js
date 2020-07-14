@@ -318,10 +318,10 @@ jQuery(document).ready(function ($) {
     }, "fast");
   }); // Let's change some breadcrumb url's...
 
-  $("a[href='https://untamedscience.com/blog/']").attr('href', 'http://www.untamedscience.com/our-blog');
-  $("a[href='https://untamedscience.com/filmmaking/']").attr('href', 'http://www.untamedscience.com/how-to-filmmaking/');
-  $("a[href='https://untamedscience.com/biology/']").attr('href', 'http://www.untamedscience.com/world-biology/');
-  $("a[href='https://untamedscience.com/biodiversity/']").attr('href', 'http://www.untamedscience.com/tree-of-life/'); //$("a[href='http://localhost/bellaworks/untamed-science/site/blog/']").attr('href', 'http://localhost:8888/bellaworks/untamed-science/site/our-blog');
+  $("a[href='https://untamedscience.com/blog/']").attr('href', 'https://untamedscience.com/our-blog');
+  $("a[href='https://untamedscience.com/filmmaking/']").attr('href', 'https://untamedscience.com/how-to-filmmaking/');
+  $("a[href='https://untamedscience.com/biology/']").attr('href', 'https://untamedscience.com/world-biology/');
+  $("a[href='https://untamedscience.com/biodiversity/']").attr('href', 'https://untamedscience.com/tree-of-life/'); //$("a[href='http://localhost/bellaworks/untamed-science/site/blog/']").attr('href', 'http://localhost:8888/bellaworks/untamed-science/site/our-blog');
   // Test for local
   // $("a[href='http://localhost:8888/bellaworks/untamed-science/site/blog']").attr('href', 'http://localhost:8888/bellaworks/untamed-science/site/our-blog');
   // $("a[href='http://www.untamedscience.com/filmmaking/']").attr('href', 'http://www.untamedscience.com/how-to-filmmaking/');

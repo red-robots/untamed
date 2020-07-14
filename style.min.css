@@ -689,9 +689,10 @@ body.home main#main{width:100%;display:block}
 .collaborations .partner a{display:block;float:left;width:100%}
 .collaborations .partner img{width:100%;height:auto;float:left}
 .wp-caption{width:100% !important}
-body.subpage #content{margin-top:30px;min-height:30em}
+body.subpage #content{margin-top:70px;min-height:30em}
 body.subpage #content .default{padding-bottom:50px}
 body.subpage #content .entry-title{font-family:"Teko",sans-serif;font-weight:500;font-size:3rem;line-height:1.1;margin:0 0 .3em}
+body.page-template-page-biology #content,body.single-biology #content{margin-top:30px;min-height:30em}
 .site-footer{background:#312b29;color:#FFF;font-size:13px;line-height:1.3;padding-top:50px;padding-bottom:30px;width:100%;float:left}
 .site-footer .footlogo{width:150px;height:auto;margin-bottom:10px}
 .site-footer .footcolLeft{width:100%;padding-left:15px;padding-right:15px;text-align:center;margin-bottom:20px}
@@ -780,7 +781,7 @@ body.subpage #content{margin-top:0}
 #header-social{width:135px;position:relative;float:right;z-index:6;display:block}
 #footer{width:1035px}
 .search-glass{display:block}
-body.subpage #content{margin-top:70px}
+body.page-template-page-biology #content,body.single-biology #content{margin-top:70px}
 }@media(min-width:900px){.slideOuterWrap .slide-overlay{max-width:450px}
 .swiper-container{height:700px}
 .swiper-container .slideCaption .text{font-weight:600;font-size:8vw}
