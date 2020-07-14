@@ -215,6 +215,12 @@ if ( !is_front_page() ) : ?>
   	itemSelector: '.blog-square',
 	animationEngine: 'best-available',
   }).isotope( 'insert', $alpha.find('.blog-square') );
+
+
+
+$("a[href='/blog']").attr('href', 'our-blog');
+
+
   
 });
   </script>

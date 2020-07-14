@@ -504,7 +504,8 @@ body.home main#main {
 }
 .blog-square {
 	width: 90%;
-	
+	margin: 0 auto 30px auto;
+	overflow: hidden;
 	position: relative;
 	// margin-right: 28px;
 	border-bottom-width: 2px;
@@ -520,10 +521,11 @@ body.home main#main {
 	border-right-color: #CCC;
 	border-left-color: #CCC;
 	display: block;
-	margin-bottom: 40px;
+	
 	@media screen and (min-width: $tabwidth) {
 		width: 48%;
 		align-items: flex-start;
+		margin-bottom: 40px;
 	}
 }
 /* Banner */
@@ -1587,11 +1589,17 @@ body.home main#main {
 		}
 	}
 }
-
+.wp-caption {
+    /* Force the box to be 100% */
+    width: 100% !important;
+  }
 /* Subpage */
 body.subpage #content {
-	margin-top: 70px;
+	margin-top: 30px;
 	min-height: 30em;
+	@media screen and (min-width: $midwidth) {
+		margin-top: 70px;
+	}
 	@include tab {
 		margin-top: 0;
 	}

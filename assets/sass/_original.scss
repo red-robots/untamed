@@ -1010,6 +1010,10 @@ img {
 	float: left;
 	clear: both;
 	margin-bottom: 50px;
+	h2 {
+		width: 100%;
+		display: inline-block;
+	}
 }
 .blog-square-below	a {
 	width: 100%;
@@ -1453,7 +1457,17 @@ h3.author-title {
 	border-top: 3px solid #ccc;
 	margin-bottom: 20px;
 }
-
+.mobile {
+	@media screen and (min-width: $midwidth) {
+		display: none;
+	}
+}
+.nomobile {
+	display: none;
+	@media screen and (min-width: $midwidth) {
+		display: block;
+	}
+}
 /*  
 	Sidebar  Structure  
 */
@@ -1464,12 +1478,21 @@ h3.author-title {
 	font-size:14px;
 }
 .sideitem {
-	width: 100%;
+	width: 90%;
 	padding:20px;	
 	position: relative;
-	float:left;
+	overflow: hidden;
 	color: #fff;
-	margin-bottom: 15px;
+	
+	margin: 0 auto 15px auto;
+	@media screen and (min-width: $tabwidth) {
+		width: 100%;
+		float:left;
+		margin: auto auto 15px auto;
+	}
+	img {
+		width: 100%;
+	}
 }
 .sideitem p {
 	margin-bottom: 10px;	

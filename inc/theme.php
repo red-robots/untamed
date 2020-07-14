@@ -6,6 +6,92 @@
  *
  * @package bellaworks
  */
+/*-------------------------------------
+  Custom nav walker that will create a dropdown for the nav
+---------------------------------------*/
+
+/**
+ * Nav Menu Dropdown
+ *
+ * @package      BE_Genesis_Child
+ * @since        1.0.0
+ * @link         https://github.com/billerickson/BE-Genesis-Child
+ * @author       Bill Erickson <bill@billerickson.net>
+ * @copyright    Copyright (c) 2011, Bill Erickson
+ * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ *
+ */
+ 
+class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu {
+  function start_lvl(&$output, $depth){
+    $indent = str_repeat("\t", $depth); // don't output children opening tag (`<ul>`)
+  }
+
+  function end_lvl(&$output, $depth){
+    $indent = str_repeat("\t", $depth); // don't output children closing tag
+  }
+
+  /**
+  * Start the element output.
+  *
+  * @param  string $output Passed by reference. Used to append additional content.
+  * @param  object $item   Menu item data object.
+  * @param  int $depth     Depth of menu item. May be used for padding.
+  * @param  array $args    Additional strings.
+  * @return void
+  */
+  function start_el(&$output, $item, $depth, $args) {
+    $url = '#' !== $item->url ? $item->url : '';
+    $output .= '<option value="' . $url . '">' . $item->title;
+  } 
+
+  function end_el(&$output, $item, $depth){
+    $output .= "</option>\n"; // replace closing </li> with the option tag
+  }
+}
+
+
+
+add_action('wp_footer', 'dropdown_menu_scripts');
+function dropdown_menu_scripts() {
+    ?>
+        <script>
+          jQuery(document).ready(function ($) {
+            $("#drop-nav").change( function() {
+                    document.location.href =  $(this).val();
+            });
+          });
+        </script>
+    <?php
+}
+
+  /**
+  * Add class to the a for yoast bread crumbs
+
+  */
+add_filter( 'wpseo_breadcrumb_single_link', 'ss_breadcrumb_single_link', 10, 2 );
+function ss_breadcrumb_single_link( $link_output, $link ) {
+$element = '';
+$element = esc_attr( apply_filters( 'wpseo_breadcrumb_single_link_wrapper', $element ) );
+$link_output =  $element;
+
+// if( $link['url'] == 'http://localhost:8888/bellaworks/untamed-science/site/blog') {
+//   $newLink = 'http://localhost:8888/bellaworks/untamed-science/site/our-blog';
+// }
+
+if ( isset( $link['url'] ) ) {
+    $link_output .= '<a  href="' . 
+
+ esc_url( $link['url'] ) . '"  class="bready">' . 
+
+ esc_html( $link['text'] ) . '</a>';
+ }
+ return $link_output;
+}
+
+
+
+
 add_filter( 'category_description', array( $GLOBALS['wp_embed'], 'autoembed' ) );
 
 
