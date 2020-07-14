@@ -80,7 +80,7 @@ $link_output =  $element;
 // }
 
 if ( isset( $link['url'] ) ) {
-    $link_output .= '<a  href="' . 
+    $link_output .= '<a f href="' . 
 
  esc_url( $link['url'] ) . '"  class="bready">' . 
 
