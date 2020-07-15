@@ -80,7 +80,7 @@ $link_output =  $element;
 // }
 
 if ( isset( $link['url'] ) ) {
-    $link_output .= '<a f href="' . 
+    $link_output .= '<a  href="' . 
 
  esc_url( $link['url'] ) . '"  class="bready">' . 
 
@@ -90,27 +90,40 @@ if ( isset( $link['url'] ) ) {
 }
 
 
+/**
+ * Add Response code to video embeds in WordPress
+ *
+ * @refer  http://alxmedia.se/code/2013/10/make-wordpress-default-video-embeds-responsive/
+ */
+function abl1035_alx_embed_html( $html ) {
+  
+  return '<div class="video-container">' . $html . '</div>';
+}
+add_filter( 'embed_oembed_html', 'abl1035_alx_embed_html', 10, 3 );
+add_filter( 'video_embed_html', 'abl1035_alx_embed_html' ); // Jetpack
+
+
 
 
 add_filter( 'category_description', array( $GLOBALS['wp_embed'], 'autoembed' ) );
 
 
-add_filter('the_content', function($content) {
-  return str_replace(array("<iframe", "</iframe>"), array('<div class="iframe-container"><iframe', "</iframe></div>"), $content);
-});
+// add_filter('the_content', function($content) {
+//   return str_replace(array("<iframe", "</iframe>"), array('<div class="iframe-container"><iframe', "</iframe></div>"), $content);
+// });
 
-add_filter('embed_oembed_html', function ($html, $url, $attr, $post_id) {
-  if(strpos($html, 'youtube.com') !== false || strpos($html, 'youtu.be') !== false){
-      return '<div class="embed-responsive  embed-responsive-16by9">' . $html . '</div>';
-  } else {
-   return $html;
-  }
-}, 10, 4);
+// add_filter('embed_oembed_html', function ($html, $url, $attr, $post_id) {
+//   if(strpos($html, 'youtube.com') !== false || strpos($html, 'youtu.be') !== false){
+//       return '<div class="embed-responsive  embed-responsive-16by9">' . $html . '</div>';
+//   } else {
+//    return $html;
+//   }
+// }, 10, 4);
 
 
-add_filter('embed_oembed_html', function($code) {
-  return str_replace('<iframe', '<iframe class="embed-responsive-item"  ', $code);
-});
+// add_filter('embed_oembed_html', function($code) {
+//   return str_replace('<iframe', '<iframe class="embed-responsive-item"  ', $code);
+// });
 /*-------------------------------------
   Custom client login, link and title.
 ---------------------------------------*/
