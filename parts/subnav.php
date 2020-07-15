@@ -8,7 +8,7 @@
                   'menu_class' => 'tree-menu',
                   'walker'         => new Walker_Nav_Menu_Dropdown(),
                   // 'items_wrap'     => '<select>%3$s</select>',
-                  'items_wrap'     => '<div class="mobile-menu"><form><select onchange="if (this.value) window.location.href=this.value"><option value="">Select a page...</option>%3$s</select></form></div>',
+                  'items_wrap'     => '<div class="mobile-menu"><form><select class="select-css" onchange="if (this.value) window.location.href=this.value"><option value="">Select a Biodiversity page...</option>%3$s</select></form></div>',
                 ));
             ?>
         </div><!-- #navigation -->
@@ -32,7 +32,7 @@
                   'menu_class' => 'tree-menu',
                   'walker'         => new Walker_Nav_Menu_Dropdown(),
                   // 'items_wrap'     => '<select>%3$s</select>',
-                  'items_wrap'     => '<div class="mobile-menu"><form><select onchange="if (this.value) window.location.href=this.value"><option value="">Select a page...</option>%3$s</select></form></div>',
+                  'items_wrap'     => '<div class="mobile-menu"><form><select class="select-css" onchange="if (this.value) window.location.href=this.value"><option value="">Select a Biology page...</option>%3$s</select></form></div>',
                 ));
             ?>
         </div><!-- #navigation -->
