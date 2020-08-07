@@ -4,7 +4,7 @@ wp_reset_postdata();
 wp_reset_query();
 if ( !is_front_page() ) : ?>
         
-       
+       <div class="clear"></div>
         <div id="footer-slider-container">
         <h3>New From Untamed Science</h3>
         	<div id="front-page-rotation">

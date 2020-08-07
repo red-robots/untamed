@@ -5,7 +5,7 @@
 get_header(); ?>
 
 
-<?php get_sidebar(); ?>
+
 	
  <div id="primary" class="content-area default">
     <main id="main" class="site-main wrapper" role="main">
