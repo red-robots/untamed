@@ -3,7 +3,8 @@
  * The template for displaying Archive pages of a Custom Blog Taxonomy
  */
 get_header(); ?>
-
+ <div id="primary" class="content-area default">
+    <main id="main" class="site-main wrapper" role="main">
 <div id="page-left">
 
  <?php 
@@ -51,5 +52,6 @@ if(have_posts()) : ?>
 </div><!-- page left -->
 
 <?php get_sidebar(); ?>
-
+</main><!-- #main -->
+</div><!-- #primary -->
 <?php get_footer(); ?>

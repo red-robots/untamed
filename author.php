@@ -3,17 +3,25 @@
  * Template for Author
  */
 
-get_header(); ?>
-<?php get_sidebar(); ?>
-	
+get_header(); 
 
+$author_details = $wp_query->get_queried_object();
+
+$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+$temp = $wp_query;
+
+
+// echo '<pre>';
+// print_r($curauth);
+// echo '</pre>';
+?>
+	
+<div id="primary" class="content-area default">
+    <main id="main" class="site-main wrapper" role="main">
 
 <div id="page-left">
 
-<?php if ( have_posts() ) : ?>
-
-
-<?php the_post(); ?>
+<?php if ( have_posts() ) :  the_post(); ?>
 
 <header class="page-header"><br>  
                     <h1 class="page-title author">
@@ -25,9 +33,22 @@ get_header(); ?>
 
 <?php  rewind_posts(); ?>
 
+ <div class="author-archive-bio"> 
+  <h2>This is <?php echo $curauth->nickname; ?>'s page</h2>    
+ <div class="author-avatar">
+    <?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentythirteen_author_bio_avatar_size', 74 ) ); ?>
+</div><!-- .author-avatar -->
+  <p class="author-bio">
+      <?php the_author_meta( 'description' ); ?>
+        </p>
+        
+     <strong>Below you can find all the Untamed Science articles that <?php echo $curauth->nickname; ?> has written.</strong>   
+     
+ </div><!-- author-archive-bio -->
+
+
 
 <div id="alpha" class="blog-square-container">
-
 
 
 <?php  // if ( $the_query->have_posts() ) : while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
@@ -35,19 +56,19 @@ get_header(); ?>
 
 
 <?php
-$author_details = $wp_query->get_queried_object();
-$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
-$temp = $wp_query;
-$wp_query = null;
-$wp_query = new WP_Query();
-$wp_query->query(array(
-	'post_type'=> array('blog', 'filmmaking', 'biology' ),
-	'paged' => $paged,
-	'posts_per_page' => 10,
-	'author' => $author
-));
 
-while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
+// $wp_query = null;
+// $wp_query = new WP_Query();
+// $wp_query->query(array(
+// 	'post_type'=> array('blog', 'filmmaking', 'biology', 'post' ),
+// 	'paged' => $paged,
+// 	'posts_per_page' => 10,
+// 	'author' => $author
+// ));
+
+//while ($wp_query->have_posts()) : $wp_query->the_post(); 
+while ( have_posts() ) : the_post();
+?>
 
 <div class="blog-square">
 
@@ -87,18 +108,7 @@ while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
    </div><!-- blog square container -->
    
   
- <div class="author-archive-bio"> 
-  <h2>This is <?php echo $curauth->nickname; ?>'s page</h2>    
- <div class="author-avatar">
-		<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'twentythirteen_author_bio_avatar_size', 74 ) ); ?>
-</div><!-- .author-avatar -->
-  <p class="author-bio">
-			<?php the_author_meta( 'description' ); ?>
-        </p>
-        
-     <strong>Below you can find all the Untamed Science articles that <?php echo $curauth->nickname; ?> has written.</strong>   
-     
- </div><!-- author-archive-bio -->
+
 
 
 
@@ -109,7 +119,7 @@ while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
 
 ##############################################
 -->
-<div id="beta" class="blog-square-container"></div>
+<!-- <div id="beta" class="blog-square-container"></div> -->
 
 
 <div class="untamed-pagi">
@@ -119,4 +129,7 @@ while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
 
 
 </div><!-- page left -->
+<?php get_sidebar(); ?>
+</main><!-- #main -->
+</div><!-- #primary -->
 <?php get_footer(); ?>

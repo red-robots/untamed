@@ -35,28 +35,31 @@
        <div class="author-links">
        <?php 
 	   
-	   $googleplus = get_the_author_meta( 'googleplus' );
-	   $facebook = get_the_author_meta( 'facebook' );
-	   $twitter = get_the_author_meta( 'twitter' ); 
+         $facebook = get_the_author_meta( 'facebook' );
+         $instagram = get_the_author_meta( 'instagram' );
+    	   $twitter = 'https://twitter.com/'.get_the_author_meta( 'twitter' ); 
 	   
 	   ?>
        
-       <?php if ( ! empty ( $googleplus ) ) { ?>
-       <div class="author-link">
-        <a href="<?php the_author_meta( 'googleplus' ); ?>">Google +</a> 
-        </div>   
-       <?php } ?>
+      
        
-        <?php if ( ! empty ( $facebook ) ) { ?>
-        <div class="author-link">
-       <a href="<?php the_author_meta( 'facebook' ); ?>">Facebook</a>
-       </div>
-       <?php } ?>
-       <?php if ( ! empty ( $twitter ) ) { ?> 
-       <div class="author-link">
-       <a href="<?php the_author_meta( 'twitter' ); ?>">Twitter</a>
-       </div>
-       <?php } ?>
+         <?php if ( ! empty ( $facebook ) ) { ?>
+           <div class="author-link">
+            <a href="<?php the_author_meta( 'facebook' ); ?>" target="_blank">Facebook</a>
+           </div>
+         <?php } ?>
+         <?php if ( ! empty ( $twitter ) ) { ?> 
+           <div class="author-link">
+            <a href="<?php echo $twitter; ?>" target="_blank">Twitter</a>
+           </div>
+         <?php } ?>
+         <?php if ( ! empty ( $instagram ) ) { ?> 
+           <div class="author-link">
+            <a href="<?php echo $instagram; ?>" target="_blank">Instagram</a>
+           </div>
+         <?php } ?>
+
+
        </div>
        
        </div><!-- author share -->

@@ -82,7 +82,7 @@ if(have_posts()) : while(have_posts()) : the_post(); ?>
  
  
   <?php // We are going to pull all the stuff from "Alpha" div into here so we can get some Isotope Animation ?>
- <div id="beta" class="blog-square-container"></div>
+<!--  <div id="beta" class="blog-square-container"></div> -->
 
 
 <div class="untamed-pagi">

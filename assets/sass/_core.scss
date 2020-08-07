@@ -1616,14 +1616,14 @@ body.subpage #content {
 		margin: 0 0 .3em;
 	}
 }
-body.page-template-page-biology #content,
-body.single-biology #content {
-	margin-top: 30px;
-	min-height: 30em;
-	@media screen and (min-width: $midwidth) {
-		margin-top: 70px;
-	}
-}
+// body.page-template-page-biology #content,
+// body.single-biology #content {
+// 	margin-top: 30px;
+// 	min-height: 30em;
+// 	@media screen and (min-width: $midwidth) {
+// 		margin-top: 70px;
+// 	}
+// }
 .site-footer {
 	background: $darkBrown;
 	color: #FFF;

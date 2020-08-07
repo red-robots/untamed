@@ -9,7 +9,15 @@
 /*-------------------------------------
   Custom nav walker that will create a dropdown for the nav
 ---------------------------------------*/
-
+function wpbrigade_author_custom_post_types( $query ) {
+if( is_author() && empty( $query->query_vars['suppress_filters'] ) ) {
+    $query->set( 'post_type', array(
+     'post', 'blog', 'filmmaking', 'biology'
+ ));
+   return $query;
+ }
+}
+add_filter( 'pre_get_posts', 'wpbrigade_author_custom_post_types' );
 /**
  * Nav Menu Dropdown
  *
