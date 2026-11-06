@@ -31,11 +31,11 @@ add_filter( 'pre_get_posts', 'wpbrigade_author_custom_post_types' );
  */
  
 class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu {
-  function start_lvl(&$output, $depth){
+  function start_lvl(&$output, $depth = 0, $args = null){
     $indent = str_repeat("\t", $depth); // don't output children opening tag (`<ul>`)
   }
 
-  function end_lvl(&$output, $depth){
+  function end_lvl(&$output, $depth = 0, $args = null){
     $indent = str_repeat("\t", $depth); // don't output children closing tag
   }
 
@@ -48,12 +48,12 @@ class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu {
   * @param  array $args    Additional strings.
   * @return void
   */
-  function start_el(&$output, $item, $depth, $args) {
+  function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
     $url = '#' !== $item->url ? $item->url : '';
     $output .= '<option value="' . $url . '">' . $item->title;
   } 
 
-  function end_el(&$output, $item, $depth){
+  function end_el(&$output, $item, $depth = 0, $args = null){
     $output .= "</option>\n"; // replace closing </li> with the option tag
   }
 }
